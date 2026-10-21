@@ -2,6 +2,8 @@
 
 面向高校新媒体与地方文化传播的青年视听创作工作室。
 
+[访问第二人生网站](https://fangzhenhao295-hub.github.io/second-chapter-studio/)
+
 ## 网站内容
 
 - 高校与地方文化代表案例及完整影片链接。
