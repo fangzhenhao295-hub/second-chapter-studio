@@ -103,6 +103,7 @@
     } else $('#dialogWatch').removeAttribute('href');
     setInfo(false);
     renderFrame();
+    stopBrandMotion();
     caseDialog.showModal();
     document.body.style.overflow = 'hidden';
     refreshIcons();
@@ -115,6 +116,7 @@
     $('#dialogWatch').hidden = true;
     setInfo(false);
     renderFrame();
+    stopBrandMotion();
     caseDialog.showModal();
     document.body.style.overflow = 'hidden';
     refreshIcons();
@@ -215,6 +217,35 @@
   caseDialog.addEventListener('close',scheduleHero);
   reduced.addEventListener('change',()=>setHeroPause(reduced.matches));
 
+  const brandMarks=$$('[data-brand-motion]');
+  let brandMotionTimer=0;
+  function stopBrandMotion() {
+    clearTimeout(brandMotionTimer);
+    brandMotionTimer=0;
+    brandMarks.forEach(mark=>mark.classList.remove('is-animating','is-entering'));
+  }
+  function playBrandMotion({fromClosed=false}={}) {
+    if(reduced.matches||document.hidden||brandMotionTimer||$('dialog[open]')) return;
+    const visibleMarks=brandMarks.filter(mark=>{
+      const bounds=mark.getBoundingClientRect();
+      return bounds.width>0&&bounds.bottom>0&&bounds.top<window.innerHeight;
+    });
+    if(!visibleMarks.length) return;
+    visibleMarks.forEach(mark=>{
+      mark.classList.toggle('is-entering',fromClosed);
+      mark.classList.add('is-animating');
+    });
+    brandMotionTimer=setTimeout(stopBrandMotion,1400);
+  }
+  [$('.brand'),$('.hero-category')].forEach(target=>target.addEventListener('pointerenter',event=>{
+    if(event.pointerType!=='touch') playBrandMotion();
+  }));
+  $('.brand').addEventListener('focus',playBrandMotion);
+  $('.brand').addEventListener('pointerdown',event=>{if(event.pointerType==='touch') playBrandMotion();});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden) stopBrandMotion();});
+  window.addEventListener('pagehide',stopBrandMotion);
+  reduced.addEventListener('change',()=>{if(reduced.matches) stopBrandMotion();});
+
   const qrData={
     wechat:{title:'微信 / WeChat',src:'assets/wechat-contact.jpg',alt:'方卓煌的微信二维码，用于项目联系'},
     rednote:{title:'小红书 / RedNote',src:'assets/contact/xiaohongshu-qr.jpg',alt:'主创小红书二维码'},
@@ -226,6 +257,7 @@
     $('#qrTitle').textContent=item.title;
     $('#qrImage').src=item.src;
     $('#qrImage').alt=item.alt;
+    stopBrandMotion();
     qrDialog.showModal();document.body.style.overflow='hidden';
   }));
   $('#qrClose').addEventListener('click',()=>qrDialog.close());
@@ -261,4 +293,5 @@
     $$('#work,#services,#ai,#team,#about').forEach(section=>activeNav.observe(section));
   }
   renderFilters();renderCases();refreshIcons();setHeroPause(heroPaused);
+  requestAnimationFrame(()=>playBrandMotion({fromClosed:true}));
 })();
