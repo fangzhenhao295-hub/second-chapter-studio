@@ -15,7 +15,7 @@ window.STUDIO_DATA = {
       "linkLabel": "查看项目文件",
       "visual": "language",
       "importance": "secondary",
-      "cover": "assets/previews/projects/foreign-language/cover.jpg",
+      "cover": "assets/display/projects/foreign-language/cover-1280.webp",
       "media": [],
       "sector": "campus",
       "links": [
@@ -23,13 +23,22 @@ window.STUDIO_DATA = {
           "href": "https://pan.baidu.com/s/1pCxYVk6oOslAbtUqXGc0BQ?pwd=hing",
           "label": "查看项目文件"
         }
-      ]
+      ],
+      "coverSource": "assets/projects/foreign-language/cover.jpg",
+      "coverImage": {
+        "src": "assets/display/projects/foreign-language/cover-1280.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 128704,
+        "fullSrc": "assets/display/projects/foreign-language/cover-2200.webp",
+        "srcSet": "assets/display/projects/foreign-language/cover-640.webp 640w, assets/display/projects/foreign-language/cover-1280.webp 1280w, assets/display/projects/foreign-language/cover-2200.webp 2200w"
+      }
     },
     {
       "id": "unwritten-rain",
       "no": "01",
       "title": "未落款的雨",
-      "year": "2026",
+      "year": "2026.06",
       "category": "authored",
       "relation": "原创音乐合作 / 毕业季共创",
       "type": "华为 MatePad Pro Max 音乐叙事短片",
@@ -38,61 +47,67 @@ window.STUDIO_DATA = {
       "result": "抖音单条播放超 6 万，点赞约 2500；华为高校花粉挑战赛复赛入围。",
       "link": "https://v.douyin.com/BUnsKCL3WsU/",
       "visual": "rain",
-      "cover": "assets/previews/projects/unwritten-rain/cover-title.jpg",
+      "cover": "assets/display/projects/unwritten-rain/cover-title-1280.webp",
       "media": [
         {
-          "src": "assets/previews/projects/unwritten-rain/still-02.jpg",
+          "src": "assets/display/projects/unwritten-rain/still-02-2600.webp",
           "alt": "《未落款的雨》湿润路面上的落花",
           "label": "FILM STILL / 02",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/unwritten-rain/still-02.jpg"
         },
         {
-          "src": "assets/previews/projects/unwritten-rain/still-03.jpg",
+          "src": "assets/display/projects/unwritten-rain/still-03-2600.webp",
           "alt": "《未落款的雨》剧场内的舞台远景",
           "label": "FILM STILL / 03",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/unwritten-rain/still-03.jpg"
         },
         {
-          "src": "assets/previews/projects/unwritten-rain/still-06.jpg",
+          "src": "assets/display/projects/unwritten-rain/still-06-2600.webp",
           "alt": "《未落款的雨》大学生日回忆场景",
           "label": "FILM STILL / 06",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/unwritten-rain/still-06.jpg"
         },
         {
-          "src": "assets/previews/projects/unwritten-rain/still-08.jpg",
+          "src": "assets/display/projects/unwritten-rain/still-08-2600.webp",
           "alt": "《未落款的雨》礼堂散场后的空间",
           "label": "FILM STILL / 08",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/unwritten-rain/still-08.jpg"
         },
         {
-          "src": "assets/previews/projects/unwritten-rain/still-10.jpg",
+          "src": "assets/display/projects/unwritten-rain/still-10-2600.webp",
           "alt": "《未落款的雨》雨滴落在平板屏幕",
           "label": "FILM STILL / 10",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/unwritten-rain/still-10.jpg"
         },
         {
-          "src": "assets/previews/projects/unwritten-rain/still-14.jpg",
+          "src": "assets/display/projects/unwritten-rain/still-14-2600.webp",
           "alt": "《未落款的雨》散场后的雨中倒影",
           "label": "FILM STILL / 14",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/unwritten-rain/still-14.jpg"
         }
       ],
       "sector": "campus",
@@ -101,13 +116,22 @@ window.STUDIO_DATA = {
           "href": "https://v.douyin.com/BUnsKCL3WsU/",
           "label": "观看完整影片"
         }
-      ]
+      ],
+      "coverSource": "assets/projects/unwritten-rain/cover-title.png",
+      "coverImage": {
+        "src": "assets/display/projects/unwritten-rain/cover-title-1280.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 76344,
+        "fullSrc": "assets/display/projects/unwritten-rain/cover-title-1920.webp",
+        "srcSet": "assets/display/projects/unwritten-rain/cover-title-640.webp 640w, assets/display/projects/unwritten-rain/cover-title-1280.webp 1280w, assets/display/projects/unwritten-rain/cover-title-1920.webp 1920w"
+      }
     },
     {
       "id": "liancheng",
       "no": "02",
       "title": "早晚得来",
-      "year": "2025",
+      "year": "2025.10",
       "category": "commissioned",
       "relation": "文旅委托 / 目的地传播",
       "type": "冠豸山 5A 景区国庆宣传片",
@@ -117,115 +141,127 @@ window.STUDIO_DATA = {
       "link": "https://weixin.qq.com/sph/AdmONtI6SI",
       "linkLabel": "观看原片",
       "visual": "daynight",
-      "cover": "assets/previews/projects/liancheng/cover-user.jpg",
+      "cover": "assets/display/projects/liancheng/cover-user-1280.webp",
       "media": [
         {
-          "src": "assets/previews/projects/liancheng/still-01.jpg",
+          "src": "assets/display/projects/liancheng/still-01-1920.webp",
           "alt": "夜市摊位中的晚餐现场",
           "label": "FILM STILL / 夜市",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/liancheng/still-01.jpg"
         },
         {
-          "src": "assets/previews/projects/liancheng/still-02.jpg",
+          "src": "assets/display/projects/liancheng/still-02-1920.webp",
           "alt": "炉火上的砂锅与升起的蒸汽",
           "label": "FILM STILL / 炉火",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/liancheng/still-02.jpg"
         },
         {
-          "src": "assets/previews/projects/liancheng/still-04.jpg",
+          "src": "assets/display/projects/liancheng/still-04-1920.webp",
           "alt": "油锅旁刚出炉的灯盏糕",
           "label": "FILM STILL / 早餐",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/liancheng/still-04.jpg"
         },
         {
-          "src": "assets/previews/projects/liancheng/still-05.jpg",
+          "src": "assets/display/projects/liancheng/still-05-1920.webp",
           "alt": "早餐铺主理人站在店门前",
           "label": "FILM STILL / 店主",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/liancheng/still-05.jpg"
         },
         {
-          "src": "assets/previews/projects/liancheng/still-06.jpg",
+          "src": "assets/display/projects/liancheng/still-06-1920.webp",
           "alt": "培田古村落屋顶航拍",
           "label": "FILM STILL / 培田古村",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/liancheng/still-06.jpg"
         },
         {
-          "src": "assets/previews/projects/liancheng/still-07.jpg",
+          "src": "assets/display/projects/liancheng/still-07-1920.webp",
           "alt": "金色稻田中的人物",
           "label": "FILM STILL / 田野",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/liancheng/still-07.jpg"
         },
         {
-          "src": "assets/previews/projects/liancheng/still-08.jpg",
+          "src": "assets/display/projects/liancheng/still-08-1920.webp",
           "alt": "冠豸山花丛间的人物肖像",
           "label": "FILM STILL / 冠豸山",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/liancheng/still-08.jpg"
         },
         {
-          "src": "assets/previews/projects/liancheng/still-09.jpg",
+          "src": "assets/display/projects/liancheng/still-09-1920.webp",
           "alt": "九龙湖水坝航拍",
           "label": "FILM STILL / 九龙湖",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/liancheng/still-09.jpg"
         },
         {
-          "src": "assets/previews/projects/liancheng/still-10.jpg",
+          "src": "assets/display/projects/liancheng/still-10-1920.webp",
           "alt": "夜市中品尝砂锅鱼汤",
           "label": "FILM STILL / 夜味",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/liancheng/still-10.jpg"
         },
         {
-          "src": "assets/previews/projects/liancheng/still-12.jpg",
+          "src": "assets/display/projects/liancheng/still-12-1920.webp",
           "alt": "水南桥夜景与人物",
           "label": "FILM STILL / 水南桥",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/liancheng/still-12.jpg"
         },
         {
-          "src": "assets/previews/projects/liancheng/still-14.jpg",
+          "src": "assets/display/projects/liancheng/still-14-1920.webp",
           "alt": "四角井前烟花与游龙人群",
           "label": "FILM STILL / 烟火",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/liancheng/still-14.jpg"
         },
         {
-          "src": "assets/previews/projects/liancheng/still-17.jpg",
+          "src": "assets/display/projects/liancheng/still-17-1920.webp",
           "alt": "连城县城夜景与烟花航拍",
           "label": "FILM STILL / 早晚都快乐",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/liancheng/still-17.jpg"
         }
       ],
       "sector": "local",
@@ -234,13 +270,22 @@ window.STUDIO_DATA = {
           "href": "https://weixin.qq.com/sph/AdmONtI6SI",
           "label": "观看原片"
         }
-      ]
+      ],
+      "coverSource": "assets/projects/liancheng/cover-user.jpg",
+      "coverImage": {
+        "src": "assets/display/projects/liancheng/cover-user-1280.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 155978,
+        "fullSrc": "assets/display/projects/liancheng/cover-user-2400.webp",
+        "srcSet": "assets/display/projects/liancheng/cover-user-640.webp 640w, assets/display/projects/liancheng/cover-user-1280.webp 1280w, assets/display/projects/liancheng/cover-user-2400.webp 2400w"
+      }
     },
     {
       "id": "sibao",
       "no": "04",
       "title": "四堡雕版印刷",
-      "year": "2025",
+      "year": "2025.08",
       "category": "authored",
       "relation": "文化记录 / 非遗影像",
       "type": "非遗文化纪录片",
@@ -249,115 +294,127 @@ window.STUDIO_DATA = {
       "result": "福建省第十二届大学生影像大赛创意类二等奖；第八届金鹄青年电影周暨原创影像大赛文旅单元入围。",
       "link": "https://weixin.qq.com/sph/AqOHkssWHj",
       "visual": "print",
-      "cover": "assets/previews/projects/sibao/cover-user.jpg",
+      "cover": "assets/display/projects/sibao/cover-user-1280.webp",
       "media": [
         {
-          "src": "assets/previews/projects/sibao/still-02.jpg",
+          "src": "assets/display/projects/sibao/still-02-2600.webp",
           "alt": "书坊建筑中的人物",
           "label": "FILM STILL / 02",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/sibao/still-02.jpg"
         },
         {
-          "src": "assets/previews/projects/sibao/still-04.jpg",
+          "src": "assets/display/projects/sibao/still-04-2600.webp",
           "alt": "古籍与木桌",
           "label": "FILM STILL / 04",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/sibao/still-04.jpg"
         },
         {
-          "src": "assets/previews/projects/sibao/still-07.jpg",
+          "src": "assets/display/projects/sibao/still-07-2600.webp",
           "alt": "古樟树与刀痕文字",
           "label": "FILM STILL / 07",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/sibao/still-07.jpg"
         },
         {
-          "src": "assets/previews/projects/sibao/still-09.jpg",
+          "src": "assets/display/projects/sibao/still-09-2600.webp",
           "alt": "古樟与古建筑",
           "label": "FILM STILL / 09",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/sibao/still-09.jpg"
         },
         {
-          "src": "assets/previews/projects/sibao/still-10.jpg",
+          "src": "assets/display/projects/sibao/still-10-2600.webp",
           "alt": "书坊灯笼",
           "label": "FILM STILL / 10",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/sibao/still-10.jpg"
         },
         {
-          "src": "assets/previews/projects/sibao/still-12.jpg",
+          "src": "assets/display/projects/sibao/still-12-2600.webp",
           "alt": "雕刻工艺近景",
           "label": "FILM STILL / 12",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/sibao/still-12.jpg"
         },
         {
-          "src": "assets/previews/projects/sibao/still-13.jpg",
+          "src": "assets/display/projects/sibao/still-13-2600.webp",
           "alt": "木版字迹特写",
           "label": "FILM STILL / 13",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/sibao/still-13.jpg"
         },
         {
-          "src": "assets/previews/projects/sibao/still-14.jpg",
+          "src": "assets/display/projects/sibao/still-14-2600.webp",
           "alt": "村落书院与水塘",
           "label": "FILM STILL / 14",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/sibao/still-14.jpg"
         },
         {
-          "src": "assets/previews/projects/sibao/still-16.jpg",
+          "src": "assets/display/projects/sibao/still-16-2600.webp",
           "alt": "暗部空间剪影",
           "label": "FILM STILL / 16",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/sibao/still-16.jpg"
         },
         {
-          "src": "assets/previews/projects/sibao/still-17.jpg",
+          "src": "assets/display/projects/sibao/still-17-2600.webp",
           "alt": "雕版与刻刀静物",
           "label": "FILM STILL / 17",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/sibao/still-17.jpg"
         },
         {
-          "src": "assets/previews/projects/sibao/still-18.jpg",
+          "src": "assets/display/projects/sibao/still-18-2600.webp",
           "alt": "传承人雕版工作场景",
           "label": "FILM STILL / 18",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/sibao/still-18.jpg"
         },
         {
-          "src": "assets/previews/projects/sibao/still-22.jpg",
+          "src": "assets/display/projects/sibao/still-22-2600.webp",
           "alt": "村落航拍与田野",
           "label": "FILM STILL / 22",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/sibao/still-22.jpg"
         }
       ],
       "sector": "local",
@@ -366,13 +423,22 @@ window.STUDIO_DATA = {
           "href": "https://weixin.qq.com/sph/AqOHkssWHj",
           "label": "观看完整影片"
         }
-      ]
+      ],
+      "coverSource": "assets/projects/sibao/cover-user.jpg",
+      "coverImage": {
+        "src": "assets/display/projects/sibao/cover-user-1280.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 106620,
+        "fullSrc": "assets/display/projects/sibao/cover-user-2400.webp",
+        "srcSet": "assets/display/projects/sibao/cover-user-640.webp 640w, assets/display/projects/sibao/cover-user-1280.webp 1280w, assets/display/projects/sibao/cover-user-2400.webp 2400w"
+      }
     },
     {
       "id": "xinquan-fireworks",
       "no": "05",
       "title": "新泉烧炮",
-      "year": "2025",
+      "year": "2025.02",
       "category": "authored",
       "relation": "田野记录 / 非遗影像",
       "type": "闽西客家民俗纪录片",
@@ -382,169 +448,187 @@ window.STUDIO_DATA = {
       "link": "https://weixin.qq.com/sph/AA48agKVhh",
       "linkLabel": "观看原片",
       "visual": "fire",
-      "cover": "assets/previews/projects/xinquan-fireworks/still-user-atmosphere.jpg",
+      "cover": "assets/display/projects/xinquan-fireworks/still-user-atmosphere-1280.webp",
       "media": [
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-01.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-01-2400.webp",
           "alt": "群山环抱的新泉村落航拍",
           "label": "FILM STILL / 村落",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-01.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-02.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-02-2400.webp",
           "alt": "村民手工制作炮竹的手部特写",
           "label": "FILM STILL / 制炮",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-02.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-03.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-03-2400.webp",
           "alt": "院落中制作炮竹的俯拍画面",
           "label": "FILM STILL / 制炮院落",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-03.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-04.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-04-2400.webp",
           "alt": "村民在白墙前舂制炮料",
           "label": "FILM STILL / 舂料",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-04.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-06.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-06-2400.webp",
           "alt": "河流与村落交汇的新泉航拍",
           "label": "FILM STILL / 新泉",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-06.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-07.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-07-2400.webp",
           "alt": "祠堂内香火与人群",
           "label": "FILM STILL / 祠堂",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-07.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-08.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-08-2400.webp",
           "alt": "祠堂鼓前围聚的村民",
           "label": "FILM STILL / 聚集",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-08.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-11.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-11-2400.webp",
           "alt": "祠堂中进行抽签仪式的村民",
           "label": "FILM STILL / 抽签",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-11.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-12.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-12-2400.webp",
           "alt": "烛火旁凝视仪式的年轻人",
           "label": "FILM STILL / 烛火",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-12.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-13.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-13-2400.webp",
           "alt": "村民围绕供桌参与仪式",
           "label": "FILM STILL / 共祭",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-13.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-16.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-16-2400.webp",
           "alt": "村民以烛火点燃长香",
           "label": "FILM STILL / 点香",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-16.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-17.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-17-2400.webp",
           "alt": "三太祖师出游队伍穿行村落",
           "label": "FILM STILL / 出游",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-17.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-18.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-18-2400.webp",
           "alt": "炮烟升腾时恭迎圣驾的俯拍画面",
           "label": "FILM STILL / 迎驾",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-18.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-19.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-19-2400.webp",
           "alt": "仪式队伍沿山路前行的航拍",
           "label": "FILM STILL / 巡游",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-19.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-20.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-20-2400.webp",
           "alt": "炮烟中的街巷与围观人群",
           "label": "FILM STILL / 炮烟",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-20.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-21.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-21-2400.webp",
           "alt": "神轿队伍穿过新泉旧巷",
           "label": "FILM STILL / 过巷",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-21.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-23.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-23-2400.webp",
           "alt": "一家人在雨伞下观看仪式",
           "label": "FILM STILL / 家人",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-23.jpg"
         },
         {
-          "src": "assets/previews/projects/xinquan-fireworks/still-24.jpg",
+          "src": "assets/display/projects/xinquan-fireworks/still-24-2400.webp",
           "alt": "村民在供桌前整理祭品",
           "label": "FILM STILL / 传承",
           "dimensions": [
             2400,
             1350
-          ]
+          ],
+          "source": "assets/projects/xinquan-fireworks/still-24.jpg"
         }
       ],
       "sector": "local",
@@ -553,13 +637,22 @@ window.STUDIO_DATA = {
           "href": "https://weixin.qq.com/sph/AA48agKVhh",
           "label": "观看原片"
         }
-      ]
+      ],
+      "coverSource": "assets/projects/xinquan-fireworks/still-user-atmosphere.jpg",
+      "coverImage": {
+        "src": "assets/display/projects/xinquan-fireworks/still-user-atmosphere-1280.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 51060,
+        "fullSrc": "assets/display/projects/xinquan-fireworks/still-user-atmosphere-2400.webp",
+        "srcSet": "assets/display/projects/xinquan-fireworks/still-user-atmosphere-640.webp 640w, assets/display/projects/xinquan-fireworks/still-user-atmosphere-1280.webp 1280w, assets/display/projects/xinquan-fireworks/still-user-atmosphere-2400.webp 2400w"
+      }
     },
     {
       "id": "ball-astronomy",
       "no": "07",
       "title": "一个球的故事",
-      "year": "2025",
+      "year": "2025.07",
       "category": "authored",
       "relation": "校园记录 / 社团记忆",
       "type": "连城一中天文社纪录片",
@@ -567,125 +660,146 @@ window.STUDIO_DATA = {
       "summary": "以天文台中的一架望远镜为线索，记录连城一中天文社自 2003 年成立以来的观测、科普与社团传承。\n作品通过旧照片、历届成员口述和夜间观测现场组织叙事，并结合社员拍摄的深空影像，呈现一代代学生共同延续的校园记忆。",
       "result": "完成社团历史、成员口述与天文观测素材的整理及成片制作。",
       "visual": "cosmic",
-      "cover": "assets/previews/projects/ball-astronomy/cover.jpg",
+      "cover": "assets/display/projects/ball-astronomy/cover-1280.webp",
       "media": [
         {
-          "src": "assets/previews/projects/ball-astronomy/still-01.jpg",
+          "src": "assets/display/projects/ball-astronomy/still-01-1920.webp",
           "alt": "天文台穹顶内的大型望远镜",
           "label": "FILM STILL / 望远镜",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/ball-astronomy/still-01.jpg"
         },
         {
-          "src": "assets/previews/projects/ball-astronomy/still-02.jpg",
+          "src": "assets/display/projects/ball-astronomy/still-02-1920.webp",
           "alt": "天文社成员在楼顶调试望远镜",
           "label": "FILM STILL / 调试",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/ball-astronomy/still-02.jpg"
         },
         {
-          "src": "assets/previews/projects/ball-astronomy/still-03.jpg",
+          "src": "assets/display/projects/ball-astronomy/still-03-1920.webp",
           "alt": "天文台穹顶与观测中的社员",
           "label": "FILM STILL / 天文台",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/ball-astronomy/still-03.jpg"
         },
         {
-          "src": "assets/previews/projects/ball-astronomy/still-04.jpg",
+          "src": "assets/display/projects/ball-astronomy/still-04-1920.webp",
           "alt": "三位天文社成员在观测室交流",
           "label": "FILM STILL / 社员",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/ball-astronomy/still-04.jpg"
         },
         {
-          "src": "assets/previews/projects/ball-astronomy/still-06.jpg",
+          "src": "assets/display/projects/ball-astronomy/still-06-1920.webp",
           "alt": "夜间楼顶的望远镜观测现场",
           "label": "FILM STILL / 夜间观测",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/ball-astronomy/still-06.jpg"
         },
         {
-          "src": "assets/previews/projects/ball-astronomy/still-07.jpg",
+          "src": "assets/display/projects/ball-astronomy/still-07-1920.webp",
           "alt": "望远镜拍摄的月球表面",
           "label": "ASTROGRAPHY / 月球",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/ball-astronomy/still-07.jpg"
         },
         {
-          "src": "assets/previews/projects/ball-astronomy/still-09.jpg",
+          "src": "assets/display/projects/ball-astronomy/still-09-1920.webp",
           "alt": "穹顶内仰望星空的望远镜剪影",
           "label": "FILM STILL / 穹顶",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/ball-astronomy/still-09.jpg"
         },
         {
-          "src": "assets/previews/projects/ball-astronomy/still-12.jpg",
+          "src": "assets/display/projects/ball-astronomy/still-12-1920.webp",
           "alt": "天文社拍摄的猎户座大星云",
           "label": "ASTROGRAPHY / 猎户座大星云",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/ball-astronomy/still-12.jpg"
         },
         {
-          "src": "assets/previews/projects/ball-astronomy/still-13.jpg",
+          "src": "assets/display/projects/ball-astronomy/still-13-1920.webp",
           "alt": "天文社拍摄的银河与校园屋顶",
           "label": "ASTROGRAPHY / 银河",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/ball-astronomy/still-13.jpg"
         },
         {
-          "src": "assets/previews/projects/ball-astronomy/still-14.jpg",
+          "src": "assets/display/projects/ball-astronomy/still-14-1920.webp",
           "alt": "天文社拍摄的仙女座星系",
           "label": "ASTROGRAPHY / 仙女座星系",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/ball-astronomy/still-14.jpg"
         },
         {
-          "src": "assets/previews/projects/ball-astronomy/still-15.jpg",
+          "src": "assets/display/projects/ball-astronomy/still-15-1920.webp",
           "alt": "第二届天文社成员在穹顶前合影",
           "label": "ARCHIVE / 社团合影",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/ball-astronomy/still-15.jpg"
         },
         {
-          "src": "assets/previews/projects/ball-astronomy/still-18.jpg",
+          "src": "assets/display/projects/ball-astronomy/still-18-1920.webp",
           "alt": "银河升起在山林上空",
           "label": "ASTROGRAPHY / 星空",
           "dimensions": [
             1920,
             1080
-          ]
+          ],
+          "source": "assets/projects/ball-astronomy/still-18.jpg"
         }
       ],
       "sector": "campus",
-      "links": []
+      "links": [],
+      "coverSource": "assets/projects/ball-astronomy/cover.jpg",
+      "coverImage": {
+        "src": "assets/display/projects/ball-astronomy/cover-1280.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 52218,
+        "fullSrc": "assets/display/projects/ball-astronomy/cover-1920.webp",
+        "srcSet": "assets/display/projects/ball-astronomy/cover-640.webp 640w, assets/display/projects/ball-astronomy/cover-1280.webp 1280w, assets/display/projects/ball-astronomy/cover-1920.webp 1920w"
+      }
     },
     {
       "id": "beyond-wide",
       "no": "08",
       "title": "比你以为的阔",
-      "year": "2026",
+      "year": "2026.09",
       "category": "authored",
       "relation": "联合发起 / 校园品牌共创",
       "type": "华为 Pura X View 校园创意短片",
@@ -703,70 +817,85 @@ window.STUDIO_DATA = {
         }
       ],
       "visual": "wide",
-      "cover": "assets/previews/projects/beyond-wide/still-01.jpg",
+      "cover": "assets/display/projects/beyond-wide/still-01-1280.webp",
       "media": [
         {
-          "src": "assets/previews/projects/beyond-wide/still-02.jpg",
+          "src": "assets/display/projects/beyond-wide/still-02-2600.webp",
           "alt": "《比你以为的阔》打开笔记本电脑",
           "label": "FILM STILL / 02",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/beyond-wide/still-02.jpg"
         },
         {
-          "src": "assets/previews/projects/beyond-wide/still-03.jpg",
+          "src": "assets/display/projects/beyond-wide/still-03-2600.webp",
           "alt": "《比你以为的阔》图书馆书写场景",
           "label": "FILM STILL / 03",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/beyond-wide/still-03.jpg"
         },
         {
-          "src": "assets/previews/projects/beyond-wide/still-05.jpg",
+          "src": "assets/display/projects/beyond-wide/still-05-2600.webp",
           "alt": "《比你以为的阔》图书馆空间转场",
           "label": "FILM STILL / 05",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/beyond-wide/still-05.jpg"
         },
         {
-          "src": "assets/previews/projects/beyond-wide/still-06.jpg",
+          "src": "assets/display/projects/beyond-wide/still-06-2600.webp",
           "alt": "《比你以为的阔》小廖人物建立镜头",
           "label": "FILM STILL / 06",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/beyond-wide/still-06.jpg"
         },
         {
-          "src": "assets/previews/projects/beyond-wide/still-10.jpg",
+          "src": "assets/display/projects/beyond-wide/still-10-2600.webp",
           "alt": "《比你以为的阔》小刘毕业设计场景",
           "label": "FILM STILL / 10",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/beyond-wide/still-10.jpg"
         },
         {
-          "src": "assets/previews/projects/beyond-wide/still-14.jpg",
+          "src": "assets/display/projects/beyond-wide/still-14-2600.webp",
           "alt": "《比你以为的阔》校园友情出演",
           "label": "FILM STILL / 14",
           "dimensions": [
             2600,
             1462
-          ]
+          ],
+          "source": "assets/projects/beyond-wide/still-14.jpg"
         }
       ],
-      "sector": "campus"
+      "sector": "campus",
+      "coverSource": "assets/projects/beyond-wide/still-01.jpg",
+      "coverImage": {
+        "src": "assets/display/projects/beyond-wide/still-01-1280.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 78082,
+        "fullSrc": "assets/display/projects/beyond-wide/still-01-2600.webp",
+        "srcSet": "assets/display/projects/beyond-wide/still-01-640.webp 640w, assets/display/projects/beyond-wide/still-01-1280.webp 1280w, assets/display/projects/beyond-wide/still-01-2600.webp 2600w"
+      }
     },
     {
       "id": "lion-go",
       "no": "09",
       "title": "321Lion go",
-      "year": "2026",
+      "year": "2026.03",
       "category": "authored",
       "relation": "主动记录 / 团队群像",
       "type": "运动人物微纪录片",
@@ -775,7 +904,7 @@ window.STUDIO_DATA = {
       "result": "入选第二届“光影记·两岸毕业季”网络微纪录片众创分享活动。",
       "link": "https://v.douyin.com/-0kqckWTZl4/",
       "visual": "motion",
-      "cover": "assets/previews/projects/lion-go/cover.jpg",
+      "cover": "assets/display/projects/lion-go/cover-1280.webp",
       "media": [],
       "sector": "campus",
       "links": [
@@ -783,13 +912,22 @@ window.STUDIO_DATA = {
           "href": "https://v.douyin.com/-0kqckWTZl4/",
           "label": "观看完整影片"
         }
-      ]
+      ],
+      "coverSource": "assets/projects/lion-go/cover.jpg",
+      "coverImage": {
+        "src": "assets/display/projects/lion-go/cover-1280.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 108868,
+        "fullSrc": "assets/display/projects/lion-go/cover-1920.webp",
+        "srcSet": "assets/display/projects/lion-go/cover-640.webp 640w, assets/display/projects/lion-go/cover-1280.webp 1280w, assets/display/projects/lion-go/cover-1920.webp 1920w"
+      }
     },
     {
       "id": "houapo",
       "no": "06",
       "title": "有味有爱有乡愁",
-      "year": "2026",
+      "year": "2026.06",
       "category": "commissioned",
       "relation": "商业委托 / 品牌内容",
       "type": "侯阿婆肉粽端午品牌人文宣传片",
@@ -798,7 +936,7 @@ window.STUDIO_DATA = {
       "result": "泉州晚报视频号单平台播放约 5 万。",
       "link": "https://weixin.qq.com/sph/Aohd4RGF4m",
       "visual": "taste",
-      "cover": "assets/previews/projects/houapo/cover.jpg",
+      "cover": "assets/display/projects/houapo/cover-1280.webp",
       "media": [],
       "sector": "local",
       "links": [
@@ -806,7 +944,16 @@ window.STUDIO_DATA = {
           "href": "https://weixin.qq.com/sph/Aohd4RGF4m",
           "label": "观看完整影片"
         }
-      ]
+      ],
+      "coverSource": "assets/projects/houapo/cover.jpg",
+      "coverImage": {
+        "src": "assets/display/projects/houapo/cover-1280.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 77820,
+        "fullSrc": "assets/display/projects/houapo/cover-2600.webp",
+        "srcSet": "assets/display/projects/houapo/cover-640.webp 640w, assets/display/projects/houapo/cover-1280.webp 1280w, assets/display/projects/houapo/cover-2600.webp 2600w"
+      }
     },
     {
       "id": "oxs",
@@ -822,61 +969,67 @@ window.STUDIO_DATA = {
       "link": "https://oxsaudio.com/",
       "linkLabel": "访问品牌网站",
       "visual": "product",
-      "cover": "assets/previews/projects/oxs/oxs-01.jpg",
+      "cover": "assets/display/projects/oxs/oxs-01-1238.webp",
       "media": [
         {
-          "src": "assets/previews/projects/oxs/oxs-02.jpg",
+          "src": "assets/display/projects/oxs/oxs-02-1238.webp",
           "alt": "OXS 产品影像 02",
           "label": "OXS / PRODUCT STILL 02",
           "dimensions": [
             1238,
             2200
-          ]
+          ],
+          "source": "assets/projects/oxs/oxs-02.jpg"
         },
         {
-          "src": "assets/previews/projects/oxs/oxs-04.jpg",
+          "src": "assets/display/projects/oxs/oxs-04-1238.webp",
           "alt": "OXS 产品影像 04",
           "label": "OXS / PRODUCT STILL 04",
           "dimensions": [
             1238,
             2200
-          ]
+          ],
+          "source": "assets/projects/oxs/oxs-04.jpg"
         },
         {
-          "src": "assets/previews/projects/oxs/oxs-06.jpg",
+          "src": "assets/display/projects/oxs/oxs-06-1238.webp",
           "alt": "OXS 产品影像 06",
           "label": "OXS / PRODUCT STILL 06",
           "dimensions": [
             1238,
             2200
-          ]
+          ],
+          "source": "assets/projects/oxs/oxs-06.jpg"
         },
         {
-          "src": "assets/previews/projects/oxs/oxs-11.jpg",
+          "src": "assets/display/projects/oxs/oxs-11-1238.webp",
           "alt": "OXS 产品影像 11",
           "label": "OXS / PRODUCT STILL 11",
           "dimensions": [
             1238,
             2200
-          ]
+          ],
+          "source": "assets/projects/oxs/oxs-11.jpg"
         },
         {
-          "src": "assets/previews/projects/oxs/oxs-gaming-03.jpg",
+          "src": "assets/display/projects/oxs/oxs-gaming-03-2600.webp",
           "alt": "OXS 游戏桌面完整场景",
           "label": "OXS GAMING / PRODUCT STILL 03",
           "dimensions": [
             2600,
             1733
-          ]
+          ],
+          "source": "assets/projects/oxs/oxs-gaming-03.jpg"
         },
         {
-          "src": "assets/previews/projects/oxs/oxs-gamescom-germany.jpg",
+          "src": "assets/display/projects/oxs/oxs-gamescom-germany-2600.webp",
           "alt": "OXS 在德国科隆游戏展的实际展台效果",
           "label": "OXS / GAMESCOM COLOGNE, GERMANY",
           "dimensions": [
             2600,
             1949
-          ]
+          ],
+          "source": "assets/projects/oxs/oxs-gamescom-germany.jpg"
         }
       ],
       "sector": "more",
@@ -885,7 +1038,16 @@ window.STUDIO_DATA = {
           "href": "https://oxsaudio.com/",
           "label": "访问品牌网站"
         }
-      ]
+      ],
+      "coverSource": "assets/projects/oxs/oxs-01.jpg",
+      "coverImage": {
+        "src": "assets/display/projects/oxs/oxs-01-1238.webp",
+        "width": 1238,
+        "height": 2200,
+        "bytes": 58490,
+        "fullSrc": "assets/display/projects/oxs/oxs-01-1238.webp",
+        "srcSet": "assets/display/projects/oxs/oxs-01-640.webp 640w, assets/display/projects/oxs/oxs-01-1238.webp 1238w"
+      }
     },
     {
       "id": "cooling-down",
@@ -901,61 +1063,67 @@ window.STUDIO_DATA = {
       "link": "https://pan.baidu.com/s/1nRCeDq0GBoJLq37VaDBxsg?pwd=jgki",
       "linkLabel": "观看完整版",
       "visual": "cool",
-      "cover": "assets/previews/projects/cooling-down/cover-official.jpg",
+      "cover": "assets/display/projects/cooling-down/cover-official-1280.webp",
       "media": [
         {
-          "src": "assets/previews/projects/cooling-down/still-02.jpg",
+          "src": "assets/display/projects/cooling-down/still-02-1706.webp",
           "alt": "《吹着吹着就凉了》剧照二",
           "label": "FILM STILL / 02",
           "dimensions": [
             1706,
             1279
-          ]
+          ],
+          "source": "assets/projects/cooling-down/still-02.jpg"
         },
         {
-          "src": "assets/previews/projects/cooling-down/still-03.jpg",
+          "src": "assets/display/projects/cooling-down/still-03-1706.webp",
           "alt": "《吹着吹着就凉了》剧照三",
           "label": "FILM STILL / 03",
           "dimensions": [
             1706,
             1279
-          ]
+          ],
+          "source": "assets/projects/cooling-down/still-03.jpg"
         },
         {
-          "src": "assets/previews/projects/cooling-down/still-05.jpg",
+          "src": "assets/display/projects/cooling-down/still-05-1706.webp",
           "alt": "《吹着吹着就凉了》剧照五",
           "label": "FILM STILL / 05",
           "dimensions": [
             1706,
             1279
-          ]
+          ],
+          "source": "assets/projects/cooling-down/still-05.jpg"
         },
         {
-          "src": "assets/previews/projects/cooling-down/still-06.jpg",
+          "src": "assets/display/projects/cooling-down/still-06-1706.webp",
           "alt": "《吹着吹着就凉了》剧照六",
           "label": "FILM STILL / 06",
           "dimensions": [
             1706,
             1279
-          ]
+          ],
+          "source": "assets/projects/cooling-down/still-06.jpg"
         },
         {
-          "src": "assets/previews/projects/cooling-down/still-07.jpg",
+          "src": "assets/display/projects/cooling-down/still-07-1706.webp",
           "alt": "《吹着吹着就凉了》剧照七",
           "label": "FILM STILL / 07",
           "dimensions": [
             1706,
             1279
-          ]
+          ],
+          "source": "assets/projects/cooling-down/still-07.jpg"
         },
         {
-          "src": "assets/previews/projects/cooling-down/still-08.jpg",
+          "src": "assets/display/projects/cooling-down/still-08-1706.webp",
           "alt": "《吹着吹着就凉了》剧照八",
           "label": "FILM STILL / 08",
           "dimensions": [
             1706,
             1279
-          ]
+          ],
+          "source": "assets/projects/cooling-down/still-08.jpg"
         }
       ],
       "sector": "more",
@@ -964,45 +1132,90 @@ window.STUDIO_DATA = {
           "href": "https://pan.baidu.com/s/1nRCeDq0GBoJLq37VaDBxsg?pwd=jgki",
           "label": "观看完整版"
         }
-      ]
+      ],
+      "coverSource": "assets/projects/cooling-down/cover-official.jpg",
+      "coverImage": {
+        "src": "assets/display/projects/cooling-down/cover-official-1280.webp",
+        "width": 1280,
+        "height": 961,
+        "bytes": 70652,
+        "fullSrc": "assets/display/projects/cooling-down/cover-official-2600.webp",
+        "srcSet": "assets/display/projects/cooling-down/cover-official-640.webp 640w, assets/display/projects/cooling-down/cover-official-1280.webp 1280w, assets/display/projects/cooling-down/cover-official-2600.webp 2600w"
+      }
     }
   ],
   "photos": [
     {
-      "src": "assets/previews/photography/camera/camera-05.jpg",
+      "src": "assets/display/photography/camera/camera-05-1280.webp",
       "alt": "校园建筑与空间",
       "title": "校园空间",
-      "credit": "摄影：方卓煌"
+      "credit": "摄影：方卓煌",
+      "source": "assets/photography/camera/camera-05.jpg",
+      "width": 1280,
+      "height": 720,
+      "bytes": 245448,
+      "fullSrc": "assets/display/photography/camera/camera-05-2600.webp",
+      "srcSet": "assets/display/photography/camera/camera-05-640.webp 640w, assets/display/photography/camera/camera-05-1280.webp 1280w, assets/display/photography/camera/camera-05-2600.webp 2600w"
     },
     {
-      "src": "assets/previews/photography/camera/camera-01.jpg",
+      "src": "assets/display/photography/camera/camera-01-1280.webp",
       "alt": "校园人物摄影",
       "title": "人物摄影",
-      "credit": "摄影：方卓煌"
+      "credit": "摄影：方卓煌",
+      "source": "assets/photography/camera/camera-01.jpg",
+      "width": 1280,
+      "height": 1920,
+      "bytes": 264848,
+      "fullSrc": "assets/display/photography/camera/camera-01-1733.webp",
+      "srcSet": "assets/display/photography/camera/camera-01-640.webp 640w, assets/display/photography/camera/camera-01-1280.webp 1280w, assets/display/photography/camera/camera-01-1733.webp 1733w"
     },
     {
-      "src": "assets/previews/photography/camera/camera-07.jpg",
+      "src": "assets/display/photography/camera/camera-07-1280.webp",
       "alt": "惠安女人物纪实",
       "title": "地方人物",
-      "credit": "摄影：方卓煌"
+      "credit": "摄影：方卓煌",
+      "source": "assets/photography/camera/camera-07.jpg",
+      "width": 1280,
+      "height": 853,
+      "bytes": 137656,
+      "fullSrc": "assets/display/photography/camera/camera-07-2600.webp",
+      "srcSet": "assets/display/photography/camera/camera-07-640.webp 640w, assets/display/photography/camera/camera-07-1280.webp 1280w, assets/display/photography/camera/camera-07-2600.webp 2600w"
     },
     {
-      "src": "assets/previews/photography/personal/field-notes/field-note-08.jpg",
+      "src": "assets/display/photography/personal/field-notes/field-note-08-1280.webp",
       "alt": "田野中的行人",
       "title": "田野观察",
-      "credit": "摄影：方卓煌"
+      "credit": "摄影：方卓煌",
+      "source": "assets/photography/personal/field-notes/field-note-08.jpg",
+      "width": 1280,
+      "height": 711,
+      "bytes": 368130,
+      "fullSrc": "assets/display/photography/personal/field-notes/field-note-08-1920.webp",
+      "srcSet": "assets/display/photography/personal/field-notes/field-note-08-640.webp 640w, assets/display/photography/personal/field-notes/field-note-08-1280.webp 1280w, assets/display/photography/personal/field-notes/field-note-08-1920.webp 1920w"
     },
     {
-      "src": "assets/previews/photography/personal/recent/stage-piano.jpg",
+      "src": "assets/display/photography/personal/recent/stage-piano-1280.webp",
       "alt": "舞台灯光下的钢琴演奏",
       "title": "舞台现场",
-      "credit": "摄影：方卓煌"
+      "credit": "摄影：方卓煌",
+      "source": "assets/photography/personal/recent/stage-piano.jpg",
+      "width": 1280,
+      "height": 720,
+      "bytes": 49608,
+      "fullSrc": "assets/display/photography/personal/recent/stage-piano-2200.webp",
+      "srcSet": "assets/display/photography/personal/recent/stage-piano-640.webp 640w, assets/display/photography/personal/recent/stage-piano-1280.webp 1280w, assets/display/photography/personal/recent/stage-piano-2200.webp 2200w"
     },
     {
-      "src": "assets/previews/photography/camera/camera-06.jpg",
+      "src": "assets/display/photography/camera/camera-06-1280.webp",
       "alt": "校园建筑航拍",
       "title": "校园航拍",
-      "credit": "摄影：方卓煌"
+      "credit": "摄影：方卓煌",
+      "source": "assets/photography/camera/camera-06.jpg",
+      "width": 1280,
+      "height": 720,
+      "bytes": 234156,
+      "fullSrc": "assets/display/photography/camera/camera-06-2600.webp",
+      "srcSet": "assets/display/photography/camera/camera-06-640.webp 640w, assets/display/photography/camera/camera-06-1280.webp 1280w, assets/display/photography/camera/camera-06-2600.webp 2600w"
     }
   ],
   "services": [

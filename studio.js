@@ -30,7 +30,7 @@
     $('#caseGrid').innerHTML = shown.map(project => `
       <article class="case-card">
         <button class="case-image ${project.id === 'oxs' ? 'is-original' : ''}" type="button" data-case="${project.id}" aria-label="查看《${escape(project.title)}》案例详情">
-          <img src="${escape(project.cover)}" alt="《${escape(project.title)}》项目封面" width="1400" height="787" loading="lazy" decoding="async"><span class="case-open">${icon('arrow-up-right')}</span>
+          <img src="${escape(project.cover)}"${project.coverImage?.srcSet ? ` srcset="${escape(project.coverImage.srcSet)}" sizes="(max-width: 560px) 46vw, (max-width: 900px) 46vw, 31vw"` : ''} alt="《${escape(project.title)}》项目封面" width="${project.coverImage?.width||1400}" height="${project.coverImage?.height||787}" loading="lazy" decoding="async"><span class="case-open">${icon('arrow-up-right')}</span>
         </button>
         <div class="case-meta"><span>${sectorNames[project.sector]}</span><span>${escape(project.year)}</span></div>
         <h3>${escape(project.title)}</h3><p class="case-type">${escape(project.type)}</p>
@@ -62,7 +62,7 @@
     if (button) openCase(button.dataset.case);
   });
 
-  $('#photoGrid').innerHTML = data.photos.map((photo,index) => `<button type="button" data-photo="${index}" aria-label="查看${escape(photo.alt)}"><img src="${escape(photo.src)}" alt="${escape(photo.alt)}" width="400" height="500" loading="lazy" decoding="async"></button>`).join('');
+  $('#photoGrid').innerHTML = data.photos.map((photo,index) => `<button type="button" data-photo="${index}" aria-label="查看${escape(photo.alt)}"><img src="${escape(photo.src)}"${photo.srcSet ? ` srcset="${escape(photo.srcSet)}" sizes="(max-width: 900px) 30vw, 16vw"` : ''} alt="${escape(photo.alt)}" width="${photo.width||400}" height="${photo.height||500}" loading="lazy" decoding="async"></button>`).join('');
   $('#photoGrid').addEventListener('click', event => {
     const button = event.target.closest('[data-photo]');
     if (button) openPhotos(Number(button.dataset.photo));
@@ -87,9 +87,10 @@
     if (!project) return;
     activeProject = project;
     const used = new Set();
-    frames = [{src:project.cover,alt:`《${project.title}》项目封面`},...project.media].filter(frame => {
-      if(used.has(frame.src)) return false;
-      used.add(frame.src);
+    frames = [{src:project.coverImage?.fullSrc||project.cover,source:project.coverSource,alt:`《${project.title}》项目封面`},...project.media].filter(frame => {
+      const source=frame.source||frame.src;
+      if(used.has(source)) return false;
+      used.add(source);
       return true;
     });
     frameIndex = 0;
@@ -127,7 +128,7 @@
     $('#imageError').hidden = true;
     image.onload = () => {if(request === imageRequest) $('#imageError').hidden = true;};
     image.onerror = () => {if(request === imageRequest) $('#imageError').hidden = false;};
-    image.src = frame.src;
+    image.src = frame.fullSrc||frame.src;
     $('#dialogCount').textContent = `${String(frameIndex+1).padStart(2,'0')} / ${String(frames.length).padStart(2,'0')}`;
     $('#dialogPrev').disabled = frames.length < 2;
     $('#dialogNext').disabled = frames.length < 2;
@@ -181,6 +182,10 @@
     const request=++heroRequest;
     const image=slides[index].querySelector('img');
     if(image.dataset.heroSrc) {
+      if(image.dataset.heroSrcset) {
+        image.srcset=image.dataset.heroSrcset;
+        delete image.dataset.heroSrcset;
+      }
       image.src=image.dataset.heroSrc;
       delete image.dataset.heroSrc;
       try {await image.decode();} catch {scheduleHero();return;}
