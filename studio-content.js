@@ -1170,28 +1170,28 @@ window.STUDIO_DATA = {
       "srcSet": "assets/display/photography/camera/camera-01-640.webp 640w, assets/display/photography/camera/camera-01-1280.webp 1280w, assets/display/photography/camera/camera-01-1733.webp 1733w"
     },
     {
-      "src": "assets/display/photography/camera/camera-07-1280.webp",
-      "alt": "惠安女人物纪实",
-      "title": "地方人物",
+      "src": "assets/display/photography/camera/camera-06-1280.webp",
+      "alt": "校园建筑航拍",
+      "title": "校园航拍",
       "credit": "摄影：方卓煌",
-      "source": "assets/photography/camera/camera-07.jpg",
+      "source": "assets/photography/camera/camera-06.jpg",
       "width": 1280,
-      "height": 853,
-      "bytes": 137656,
-      "fullSrc": "assets/display/photography/camera/camera-07-2600.webp",
-      "srcSet": "assets/display/photography/camera/camera-07-640.webp 640w, assets/display/photography/camera/camera-07-1280.webp 1280w, assets/display/photography/camera/camera-07-2600.webp 2600w"
+      "height": 720,
+      "bytes": 234156,
+      "fullSrc": "assets/display/photography/camera/camera-06-2600.webp",
+      "srcSet": "assets/display/photography/camera/camera-06-640.webp 640w, assets/display/photography/camera/camera-06-1280.webp 1280w, assets/display/photography/camera/camera-06-2600.webp 2600w"
     },
     {
-      "src": "assets/display/photography/personal/field-notes/field-note-08-1280.webp",
-      "alt": "田野中的行人",
-      "title": "田野观察",
+      "src": "assets/display/photography/studio/clocktower-reflection-1280.webp",
+      "alt": "雨后水面中的钟楼倒影与撑伞行人",
+      "title": "钟楼倒影",
       "credit": "摄影：方卓煌",
-      "source": "assets/photography/personal/field-notes/field-note-08.jpg",
+      "source": "assets/photography/studio/clocktower-reflection.jpg",
       "width": 1280,
-      "height": 711,
-      "bytes": 368130,
-      "fullSrc": "assets/display/photography/personal/field-notes/field-note-08-1920.webp",
-      "srcSet": "assets/display/photography/personal/field-notes/field-note-08-640.webp 640w, assets/display/photography/personal/field-notes/field-note-08-1280.webp 1280w, assets/display/photography/personal/field-notes/field-note-08-1920.webp 1920w"
+      "height": 1707,
+      "bytes": 270322,
+      "fullSrc": "assets/display/photography/studio/clocktower-reflection-2600.webp",
+      "srcSet": "assets/display/photography/studio/clocktower-reflection-640.webp 640w, assets/display/photography/studio/clocktower-reflection-1280.webp 1280w, assets/display/photography/studio/clocktower-reflection-2600.webp 2526w"
     },
     {
       "src": "assets/display/photography/personal/recent/stage-piano-1280.webp",
@@ -1206,16 +1206,16 @@ window.STUDIO_DATA = {
       "srcSet": "assets/display/photography/personal/recent/stage-piano-640.webp 640w, assets/display/photography/personal/recent/stage-piano-1280.webp 1280w, assets/display/photography/personal/recent/stage-piano-2200.webp 2200w"
     },
     {
-      "src": "assets/display/photography/camera/camera-06-1280.webp",
-      "alt": "校园建筑航拍",
-      "title": "校园航拍",
+      "src": "assets/display/photography/studio/campus-mooncake-1280.webp",
+      "alt": "校园人物手持泉州师范学院月饼礼盒的产品摄影",
+      "title": "校园月饼产品摄影",
       "credit": "摄影：方卓煌",
-      "source": "assets/photography/camera/camera-06.jpg",
+      "source": "assets/photography/studio/campus-mooncake.jpg",
       "width": 1280,
-      "height": 720,
-      "bytes": 234156,
-      "fullSrc": "assets/display/photography/camera/camera-06-2600.webp",
-      "srcSet": "assets/display/photography/camera/camera-06-640.webp 640w, assets/display/photography/camera/camera-06-1280.webp 1280w, assets/display/photography/camera/camera-06-2600.webp 2600w"
+      "height": 853,
+      "bytes": 91098,
+      "fullSrc": "assets/display/photography/studio/campus-mooncake-2600.webp",
+      "srcSet": "assets/display/photography/studio/campus-mooncake-640.webp 640w, assets/display/photography/studio/campus-mooncake-1280.webp 1280w, assets/display/photography/studio/campus-mooncake-2600.webp 2600w"
     }
   ],
   "services": [

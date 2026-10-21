@@ -179,8 +179,25 @@
 
   const slides=$$('.hero-slide');
   const controls=$$('[data-hero]');
+  const hero=$('.hero');
+  const heroCopy=$$('.hero-index,.hero-category,.hero-name,.hero-summary');
+  let heroCopyAnimations=[];
+  function finishHeroCopy() {
+    heroCopyAnimations.forEach(animation=>animation.cancel());
+    heroCopyAnimations=[];
+    hero.classList.add('is-copy-ready');
+  }
+  function revealHeroCopy(initial=false) {
+    finishHeroCopy();
+    if(reduced.matches||document.hidden||!hero.animate||hero.getBoundingClientRect().bottom<=0) return;
+    heroCopyAnimations=heroCopy.map((element,index)=>element.animate(
+      [{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],
+      {duration:900,delay:(initial?450:700)+[0,80,200,350][index],easing:'cubic-bezier(.22,.65,.26,1)',fill:'backwards'}
+    ));
+  }
   let heroIndex=0,heroTimer=0,heroPaused=reduced.matches,heroRequest=0;
   async function selectHero(index) {
+    clearTimeout(heroTimer);
     const request=++heroRequest;
     const image=slides[index].querySelector('img');
     if(image.dataset.heroSrc) {
@@ -198,6 +215,7 @@
     slides.forEach((slide,i)=>slide.classList.toggle('is-active',i===index));
     controls.forEach((button,i)=>{button.classList.toggle('is-active',i===index);if(i===index)button.setAttribute('aria-current','true');else button.removeAttribute('aria-current');});
     $('#heroCount').textContent=`${String(index+1).padStart(2,'0')} / 03`;
+    revealHeroCopy();
     scheduleHero();
   }
   function scheduleHero() {
@@ -213,9 +231,11 @@
   }
   controls.forEach(button=>button.addEventListener('click',()=>selectHero(Number(button.dataset.hero))));
   $('#heroPause').addEventListener('click',()=>setHeroPause(!heroPaused));
+  hero.addEventListener('focusin',event=>{if(event.target.closest('.hero-summary')) finishHeroCopy();});
   document.addEventListener('visibilitychange',scheduleHero);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden) finishHeroCopy();});
   caseDialog.addEventListener('close',scheduleHero);
-  reduced.addEventListener('change',()=>setHeroPause(reduced.matches));
+  reduced.addEventListener('change',()=>{setHeroPause(reduced.matches);if(reduced.matches) finishHeroCopy();});
 
   const brandMarks=$$('[data-brand-motion]');
   let brandMotionTimer=0;
@@ -294,4 +314,8 @@
   }
   renderFilters();renderCases();refreshIcons();setHeroPause(heroPaused);
   requestAnimationFrame(()=>playBrandMotion({fromClosed:true}));
+  (async()=>{
+    try {await slides[0].querySelector('img').decode();} catch {}
+    if(heroRequest===0) revealHeroCopy(true);
+  })();
 })();
