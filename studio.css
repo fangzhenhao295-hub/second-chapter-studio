@@ -360,9 +360,7 @@ body,button,input,select,textarea,dialog{font-family:var(--font-ui)}
 .hero-intro-skip:hover{background:transparent;color:#fff}
 @supports(corner-shape:squircle){.hero-intro-card{corner-shape:squircle}}
 @media(prefers-reduced-motion:reduce){.hero-intro{display:none}.hero-intro-pending .hero>.hero-category,.hero-intro-pending .hero>.hero-name,.hero-intro-pending .hero>.hero-summary{opacity:1}}
-.hero-slide:nth-child(4) img{object-position:58% center}
 .hero-slide:first-child img{object-position:center 60%}
 .hero-slide:nth-child(2) img{object-position:center center}
 .hero[data-index="0"] .hero-category{color:#fff;text-shadow:0 1px 5px rgb(0 0 0 / .3)}
-.hero[data-index="3"] .hero-category{color:var(--ink)}
 @media(max-width:900px){.hero-slide:first-child img{object-position:62% center}.hero-slide:nth-child(2) img{object-position:54% center}.hero[data-index="1"] .hero-category{color:var(--ink);text-shadow:none}}
