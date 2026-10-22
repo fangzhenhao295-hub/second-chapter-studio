@@ -243,6 +243,11 @@ body,button,input,select,textarea,dialog{font-family:var(--font-ui)}
 .intro-facts p{border-top:0;padding-top:0}
 .intro-facts .intro-fact-icon{display:flex;align-items:center;gap:8px;width:64px;height:32px;margin-bottom:8px;color:var(--accent)}
 .intro-fact-icon svg{width:28px;height:28px;stroke-width:1.6}
+.process-list li{border-top:0;padding-top:0}
+.process-marker{display:flex;align-items:center;gap:12px;height:32px;margin-bottom:18px;color:var(--accent)}
+.process-marker svg{width:28px;height:28px;stroke-width:1.6}
+.process-marker>span{font-size:12px;line-height:1;font-variant-numeric:tabular-nums}
+.process-list h3{margin-top:0}
 .work-description>span{text-wrap:pretty}
 .case-more{border-top:0}
 .copyright{min-width:0;text-align:left;line-height:1.8}
