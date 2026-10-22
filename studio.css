@@ -372,10 +372,6 @@ body,button,input,select,textarea,dialog{font-family:var(--font-ui)}
 .hero-slide:first-child img{object-position:center 60%}
 .hero-slide:nth-child(2) img{object-position:center center}
 .hero-slide:nth-child(4) img{object-position:48% center}
-.hero{touch-action:pan-y pinch-zoom}
-.hero-reel img{-webkit-user-drag:none;user-select:none}
-.hero.is-dragging,.hero.is-dragging *{cursor:grabbing;user-select:none}
-@media(hover:hover) and (pointer:fine){.hero{cursor:grab}.hero a,.hero button{cursor:pointer}}
 .hero-motion-ready .hero:not(.is-copy-ready) .hero-work,.hero-intro-pending .hero-work{opacity:0}
 @media(max-width:560px){
   .hero-actions{right:10px;bottom:14px;gap:8px}
@@ -393,3 +389,5 @@ body,button,input,select,textarea,dialog{font-family:var(--font-ui)}
 .about-heading .section-label{margin-bottom:26px}
 .about-content .enterprise-all{width:100%;max-width:640px;margin-top:36px}
 @media(max-width:560px){.about-heading .section-label{margin-bottom:22px}}
+@media(max-width:1000px){.service-visual figure:last-child:nth-child(odd){grid-column:1/-1}.service-visual figure:last-child:nth-child(odd) img{aspect-ratio:2/1}}
+@media(min-width:1001px){.service-visual img{max-height:260px}}
