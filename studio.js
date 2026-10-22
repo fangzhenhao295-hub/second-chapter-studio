@@ -35,7 +35,7 @@
         </button>
         <div class="case-meta"><span>${sectorNames[project.sector]}</span><span>${escape(project.year)}</span></div>
         <h3>${escape(project.title)}</h3><p class="case-type">${escape(project.type)}</p>
-        <div class="case-actions">${project.links.length ? external(project.links[0], watchLabel(project), 'case-watch', watchIcon(project)) : '<span></span>'}<button type="button" class="case-detail" data-case="${project.id}">案例详情${icon('plus')}</button></div>
+        <div class="case-actions">${project.links.length ? external(project.links[0], watchLabel(project), 'case-watch', watchIcon(project)) : '<span></span>'}<button type="button" class="case-detail" data-case="${project.id}">案例详情${icon('circle')}</button></div>
       </article>`).join('');
     $('#moreCases').hidden = shown.length >= projects.length;
     $('#caseCount').textContent = `${String(shown.length).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}`;

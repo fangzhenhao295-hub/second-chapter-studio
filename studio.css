@@ -256,6 +256,7 @@ body,button,input,select,textarea,dialog{font-family:var(--font-ui)}
 .case-watch svg,.dialog-watch svg{width:14px;height:14px}
 .case-watch .lucide-play,.dialog-watch .lucide-play{fill:currentColor;stroke-width:1.2}
 .case-detail{min-height:38px;white-space:nowrap;margin-left:auto}
+.case-detail .lucide-circle{width:8px;height:8px;fill:currentColor;stroke:none}
 .dialog-panel .case-watch{display:flex;width:fit-content;max-width:100%;white-space:normal}
 @supports(corner-shape:squircle){.hero-summary>a,.case-watch,.dialog-watch{corner-shape:squircle}}
 @media(max-width:1180px){
