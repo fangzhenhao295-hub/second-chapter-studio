@@ -241,13 +241,10 @@ body,button,input,select,textarea,dialog{font-family:var(--font-ui)}
 @media(min-width:901px){.intro-content>p{max-width:720px;text-wrap:pretty}}
 .work-description>span{text-wrap:pretty}
 .case-more{border-top:0}
-.site-foot .footer-brand{display:block;flex:0 0 96px;width:96px;max-width:100%}
-.footer-brand img{width:100%;height:auto}
-.copyright{min-width:0;text-align:center;line-height:1.8}
+.copyright{min-width:0;text-align:left;line-height:1.8}
 .copyright>span{display:block}
 @media(max-width:560px){
   .site-foot{grid-template-columns:1fr;gap:20px}
-  .site-foot .footer-brand{width:88px}
   .copyright{text-align:left;font-size:10px}
 }
 .case-actions{flex-wrap:wrap;gap:8px 12px}
