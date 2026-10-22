@@ -2,6 +2,7 @@ window.STUDIO_DATA = {
   "projects": [
     {
       "id": "foreign-language",
+      "format": "promo",
       "no": "11",
       "title": "外国语学院招生宣传片",
       "year": "2026.07",
@@ -19,27 +20,34 @@ window.STUDIO_DATA = {
       "linkLabel": "查看项目文件",
       "visual": "language",
       "importance": "secondary",
-      "cover": "assets/display/projects/foreign-language/cover-1280.webp",
+      "cover": "assets/display/projects/foreign-language/cover-campus-tower-1267.webp",
+      "coverFit": "cover",
       "media": [],
       "sector": "campus",
       "links": [
         {
           "href": "https://pan.baidu.com/s/1pCxYVk6oOslAbtUqXGc0BQ?pwd=hing",
           "label": "查看项目文件"
+        },
+        {
+          "href": "https://mp.weixin.qq.com/s/kTDYTWkghfooESuxxwLMmQ",
+          "label": "查看官方发布",
+          "kind": "publication"
         }
       ],
-      "coverSource": "assets/projects/foreign-language/cover.jpg",
+      "coverSource": "assets/display/projects/foreign-language/cover-campus-tower-1267.webp",
       "coverImage": {
-        "src": "assets/display/projects/foreign-language/cover-1280.webp",
-        "width": 1280,
-        "height": 720,
-        "bytes": 128704,
-        "fullSrc": "assets/display/projects/foreign-language/cover-2200.webp",
-        "srcSet": "assets/display/projects/foreign-language/cover-640.webp 640w, assets/display/projects/foreign-language/cover-1280.webp 1280w, assets/display/projects/foreign-language/cover-2200.webp 2200w"
+        "src": "assets/display/projects/foreign-language/cover-campus-tower-1267.webp",
+        "width": 1267,
+        "height": 713,
+        "bytes": 200028,
+        "fullSrc": "assets/display/projects/foreign-language/cover-campus-tower-1267.webp",
+        "srcSet": "assets/display/projects/foreign-language/cover-campus-tower-640.webp 640w, assets/display/projects/foreign-language/cover-campus-tower-1267.webp 1267w"
       }
     },
     {
       "id": "unwritten-rain",
+      "format": "documentary",
       "no": "01",
       "title": "未落款的雨",
       "year": "2026.06",
@@ -138,6 +146,7 @@ window.STUDIO_DATA = {
     },
     {
       "id": "liancheng",
+      "format": "promo",
       "no": "02",
       "title": "早晚得来",
       "year": "2025.10",
@@ -291,7 +300,56 @@ window.STUDIO_DATA = {
       }
     },
     {
+      "id": "grassland-concert",
+      "format": "events",
+      "title": "夏夜未央，青春回响",
+      "type": "陈守仁商学院草地音乐会活动快剪",
+      "summary": "泉州师范学院陈守仁商学院“夏夜未央，青春回响”草地音乐会活动快剪，记录校园草地上的音乐演出与青春相聚。",
+      "links": [
+        {
+          "href": "https://mp.weixin.qq.com/s/Z-MnmUuNeCjggqckjsasWQ",
+          "label": "查看项目发布",
+          "kind": "publication"
+        }
+      ],
+      "sector": "campus",
+      "media": [],
+      "cover": "assets/display/projects/grassland-concert/cover-1267.webp",
+      "coverSource": "assets/display/projects/grassland-concert/cover-1267.webp",
+      "coverFit": "cover",
+      "coverImage": {
+        "src": "assets/display/projects/grassland-concert/cover-1267.webp",
+        "width": 1267,
+        "height": 713,
+        "bytes": 70494,
+        "fullSrc": "assets/display/projects/grassland-concert/cover-1267.webp",
+        "srcSet": "assets/display/projects/grassland-concert/cover-640.webp 640w, assets/display/projects/grassland-concert/cover-1267.webp 1267w"
+      }
+    },
+    {
+      "id": "maritime-language-services",
+      "format": "promo",
+      "title": "海丝文旅讲解",
+      "type": "外国语学院国际传播与语言服务展示（英文视频）",
+      "summary": "泉州师范学院外国语学院国际传播与语言服务展示，以英文视频呈现海丝文旅讲解。",
+      "links": [],
+      "sector": "campus",
+      "media": [],
+      "cover": "assets/display/projects/maritime-language-services/cover-classroom-clear-1280.webp",
+      "coverSource": "assets/display/projects/maritime-language-services/cover-classroom-clear-2200.webp",
+      "coverFit": "cover",
+      "coverImage": {
+        "src": "assets/display/projects/maritime-language-services/cover-classroom-clear-1280.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 67418,
+        "fullSrc": "assets/display/projects/maritime-language-services/cover-classroom-clear-2200.webp",
+        "srcSet": "assets/display/projects/maritime-language-services/cover-classroom-clear-640.webp 640w, assets/display/projects/maritime-language-services/cover-classroom-clear-1280.webp 1280w, assets/display/projects/maritime-language-services/cover-classroom-clear-2200.webp 2200w"
+      }
+    },
+    {
       "id": "sibao",
+      "format": "documentary",
       "no": "04",
       "title": "四堡雕版印刷",
       "year": "2025.08",
@@ -445,6 +503,7 @@ window.STUDIO_DATA = {
     },
     {
       "id": "xinquan-fireworks",
+      "format": "documentary",
       "no": "05",
       "title": "新泉烧炮",
       "year": "2025.02",
@@ -659,6 +718,7 @@ window.STUDIO_DATA = {
     },
     {
       "id": "ball-astronomy",
+      "format": "documentary",
       "no": "07",
       "title": "一个球的故事",
       "year": "2025.07",
@@ -813,6 +873,7 @@ window.STUDIO_DATA = {
     },
     {
       "id": "beyond-wide",
+      "format": "documentary",
       "no": "08",
       "title": "比你以为的阔",
       "year": "2026.09",
@@ -909,6 +970,7 @@ window.STUDIO_DATA = {
     },
     {
       "id": "lion-go",
+      "format": "documentary",
       "no": "09",
       "title": "321Lion go",
       "year": "2026.03",
@@ -941,6 +1003,7 @@ window.STUDIO_DATA = {
     },
     {
       "id": "houapo",
+      "format": "promo",
       "no": "06",
       "title": "有味有爱有乡愁",
       "year": "2026.06",
@@ -973,6 +1036,7 @@ window.STUDIO_DATA = {
     },
     {
       "id": "oxs",
+      "format": "brand",
       "no": "03",
       "title": "OXS 欧洲市场产品视觉",
       "year": "2025—2026",
@@ -1067,6 +1131,7 @@ window.STUDIO_DATA = {
     },
     {
       "id": "cooling-down",
+      "format": "documentary",
       "no": "10",
       "title": "吹着吹着就凉了",
       "year": "2025",
@@ -1157,6 +1222,178 @@ window.STUDIO_DATA = {
         "bytes": 70652,
         "fullSrc": "assets/display/projects/cooling-down/cover-official-2600.webp",
         "srcSet": "assets/display/projects/cooling-down/cover-official-640.webp 640w, assets/display/projects/cooling-down/cover-official-1280.webp 1280w, assets/display/projects/cooling-down/cover-official-2600.webp 2600w"
+      }
+    },
+    {
+      "id": "chen-zuchang-tribute",
+      "format": "promo",
+      "title": "因您而暖，向光而行",
+      "type": "献给陈祖昌先生的纪念影像",
+      "summary": "献给陈祖昌先生的纪念视频，以“因您而暖，向光而行”为题。",
+      "links": [],
+      "sector": "campus",
+      "media": [],
+      "cover": "assets/display/projects/chen-zuchang-tribute/cover-1267.webp",
+      "coverSource": "assets/display/projects/chen-zuchang-tribute/cover-1267.webp",
+      "coverFit": "contain",
+      "coverImage": {
+        "src": "assets/display/projects/chen-zuchang-tribute/cover-1267.webp",
+        "width": 1267,
+        "height": 713,
+        "bytes": 51410,
+        "fullSrc": "assets/display/projects/chen-zuchang-tribute/cover-1267.webp",
+        "srcSet": "assets/display/projects/chen-zuchang-tribute/cover-640.webp 640w, assets/display/projects/chen-zuchang-tribute/cover-1267.webp 1267w"
+      }
+    },
+    {
+      "id": "diplomats-visit",
+      "format": "events",
+      "title": "“一带一路”国家外交官来校访问",
+      "year": "2025.06",
+      "type": "泉州师范学院参观考察活动纪实",
+      "summary": "记录“一带一路”国家外交官来泉州师范学院参观考察的活动现场。",
+      "links": [],
+      "sector": "campus",
+      "media": [],
+      "cover": "assets/display/projects/diplomats-visit/cover-1267.webp",
+      "coverSource": "assets/display/projects/diplomats-visit/cover-1267.webp",
+      "coverFit": "contain",
+      "coverImage": {
+        "src": "assets/display/projects/diplomats-visit/cover-1267.webp",
+        "width": 1267,
+        "height": 713,
+        "bytes": 122622,
+        "fullSrc": "assets/display/projects/diplomats-visit/cover-1267.webp",
+        "srcSet": "assets/display/projects/diplomats-visit/cover-640.webp 640w, assets/display/projects/diplomats-visit/cover-1267.webp 1267w"
+      }
+    },
+    {
+      "id": "intangible-ip-practice",
+      "format": "documentary",
+      "title": "知产护航，非遗传承",
+      "year": "2026",
+      "type": "陈守仁商学院寒假社会实践纪实",
+      "summary": "泉州师范学院陈守仁商学院知识产权志愿者服务队寒假社会实践纪实录，记录以知识产权保护与非遗传承为主题的实践活动。",
+      "links": [],
+      "sector": "campus",
+      "media": [],
+      "cover": "assets/display/projects/intangible-ip-practice/cover-1267.webp",
+      "coverSource": "assets/display/projects/intangible-ip-practice/cover-1267.webp",
+      "coverFit": "contain",
+      "coverImage": {
+        "src": "assets/display/projects/intangible-ip-practice/cover-1267.webp",
+        "width": 1267,
+        "height": 713,
+        "bytes": 78260,
+        "fullSrc": "assets/display/projects/intangible-ip-practice/cover-1267.webp",
+        "srcSet": "assets/display/projects/intangible-ip-practice/cover-640.webp 640w, assets/display/projects/intangible-ip-practice/cover-1267.webp 1267w"
+      }
+    },
+    {
+      "id": "chemistry-alumni",
+      "format": "events",
+      "title": "化工与材料学院校友会成立大会",
+      "type": "泉州师范学院活动快剪",
+      "summary": "泉州师范学院化工与材料学院校友会成立大会活动快剪，记录校友相聚与大会现场。",
+      "links": [
+        {
+          "href": "https://weixin.qq.com/sph/AZBeOZksST",
+          "label": "观看完整影片"
+        }
+      ],
+      "sector": "campus",
+      "media": [],
+      "cover": "assets/display/projects/chemistry-alumni/cover-1267.webp",
+      "coverSource": "assets/display/projects/chemistry-alumni/cover-1267.webp",
+      "coverFit": "contain",
+      "coverImage": {
+        "src": "assets/display/projects/chemistry-alumni/cover-1267.webp",
+        "width": 1267,
+        "height": 714,
+        "bytes": 88008,
+        "fullSrc": "assets/display/projects/chemistry-alumni/cover-1267.webp",
+        "srcSet": "assets/display/projects/chemistry-alumni/cover-640.webp 640w, assets/display/projects/chemistry-alumni/cover-1267.webp 1267w"
+      }
+    },
+    {
+      "id": "midsummer-echoes",
+      "format": "events",
+      "title": "仲夏回响",
+      "type": "2022 级音乐学专业毕业汇报演出",
+      "summary": "泉州师范学院 2022 级音乐学专业毕业汇报演出影像记录。\n公开入口为部分演出片段，并非完整演出。",
+      "links": [
+        {
+          "href": "https://mp.weixin.qq.com/s/VJfTa7LgW98CWGvmh66ydg",
+          "label": "查看演出片段",
+          "kind": "publication"
+        }
+      ],
+      "sector": "campus",
+      "media": [],
+      "cover": "assets/display/projects/midsummer-echoes/cover-1267.webp",
+      "coverSource": "assets/display/projects/midsummer-echoes/cover-1267.webp",
+      "coverFit": "contain",
+      "coverImage": {
+        "src": "assets/display/projects/midsummer-echoes/cover-1267.webp",
+        "width": 1267,
+        "height": 713,
+        "bytes": 43512,
+        "fullSrc": "assets/display/projects/midsummer-echoes/cover-1267.webp",
+        "srcSet": "assets/display/projects/midsummer-echoes/cover-640.webp 640w, assets/display/projects/midsummer-echoes/cover-1267.webp 1267w"
+      }
+    },
+    {
+      "id": "li-zhi-integrity",
+      "format": "promo",
+      "title": "清官李贽和他的廉政思想",
+      "type": "廉洁文化主题宣讲视频",
+      "summary": "以“清官李贽和他的廉政思想”为主题的宣讲视频。",
+      "links": [
+        {
+          "href": "https://mp.weixin.qq.com/s/15w-XwXQHJni8To0bzmfRw",
+          "label": "查看官方发布",
+          "kind": "publication"
+        }
+      ],
+      "sector": "campus",
+      "media": [],
+      "cover": "assets/display/projects/li-zhi-integrity/cover-1267.webp",
+      "coverSource": "assets/display/projects/li-zhi-integrity/cover-1267.webp",
+      "coverFit": "contain",
+      "coverImage": {
+        "src": "assets/display/projects/li-zhi-integrity/cover-1267.webp",
+        "width": 1267,
+        "height": 592,
+        "bytes": 106544,
+        "fullSrc": "assets/display/projects/li-zhi-integrity/cover-1267.webp",
+        "srcSet": "assets/display/projects/li-zhi-integrity/cover-640.webp 640w, assets/display/projects/li-zhi-integrity/cover-1267.webp 1267w"
+      }
+    },
+    {
+      "id": "foreign-heritage-practice",
+      "format": "documentary",
+      "title": "外语为青少年牵线，让千年非遗火起来",
+      "type": "外国语学院寒假社会实践纪实",
+      "summary": "泉州师范学院外国语学院寒假社会实践纪实，以外语传播与非遗传承为主题，记录青年实践活动。",
+      "links": [
+        {
+          "href": "https://article.xuexi.cn/articles/index.html?source=share&art_id=110225976936191916&study_style_id=video_default&to_audit_timestamp=2026-03-05+10%3A19%3A07&share_to=wx_single&xxqg_jm=dtxuexi%3A%2F%2Fappclient%2Fpage%2Fimmersive_play_v2%3Freco_type%3D1%26itemId%3D110225976936191916%26cid%3D1156%26immersion_transfer_info%3D%257B%2522shr_info%2522%253A%25221%2522%257D%26study_video_continue%3D0&item_id=110225976936191916",
+          "label": "查看学习强国发布",
+          "kind": "publication"
+        }
+      ],
+      "sector": "campus",
+      "media": [],
+      "cover": "assets/display/projects/foreign-heritage-practice/cover-1267.webp",
+      "coverSource": "assets/display/projects/foreign-heritage-practice/cover-1267.webp",
+      "coverFit": "contain",
+      "coverImage": {
+        "src": "assets/display/projects/foreign-heritage-practice/cover-1267.webp",
+        "width": 1267,
+        "height": 713,
+        "bytes": 120082,
+        "fullSrc": "assets/display/projects/foreign-heritage-practice/cover-1267.webp",
+        "srcSet": "assets/display/projects/foreign-heritage-practice/cover-640.webp 640w, assets/display/projects/foreign-heritage-practice/cover-1267.webp 1267w"
       }
     }
   ],

@@ -34,10 +34,10 @@
   <script>if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('hero-motion-ready');if(!location.hash||location.hash==='#top')document.documentElement.classList.add('hero-intro-pending');setTimeout(()=>{document.documentElement.classList.remove('hero-motion-ready','hero-intro-pending');window.dispatchEvent(new Event('studio:intro-timeout'));},10000);}</script>
   <link rel="preload" href="assets/fonts/Outfit-Variable.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="assets/fonts/HarmonyOS-Sans-SC-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="studio.css?v=20261022-8">
+  <link rel="stylesheet" href="studio.css?v=20261022-10">
   <script src="assets/lucide.min.js" defer></script>
-  <script src="studio-content.js?v=20261022-2" defer></script>
-  <script src="studio.js?v=20261022-4" defer></script>
+  <script src="studio-content.js?v=20261022-10" defer></script>
+  <script src="studio.js?v=20261022-10" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#work">跳至精选案例</a>
@@ -57,13 +57,14 @@
         <figure class="hero-slide is-active"><img src="assets/display/photography/studio/stage-piano-evening-1280.webp" srcset="assets/display/photography/studio/stage-piano-evening-640.webp 640w, assets/display/photography/studio/stage-piano-evening-1280.webp 1280w, assets/display/photography/studio/stage-piano-evening-2600.webp 2600w" sizes="(max-width: 900px) max(100vw, 150vh), 100vw" alt="" fetchpriority="high" width="2600" height="1462"></figure>
         <figure class="hero-slide"><img src="assets/display/photography/camera/camera-05-1280.webp" srcset="assets/display/photography/camera/camera-05-640.webp 640w, assets/display/photography/camera/camera-05-1280.webp 1280w, assets/display/photography/camera/camera-05-2600.webp 2600w" sizes="(max-width: 900px) max(100vw, 150vh), 100vw" alt="" fetchpriority="low" width="2600" height="1462"></figure>
         <figure class="hero-slide"><img data-hero-src="assets/display/projects/ball-astronomy/still-03-1280.webp" data-hero-srcset="assets/display/projects/ball-astronomy/still-03-640.webp 640w, assets/display/projects/ball-astronomy/still-03-1280.webp 1280w, assets/display/projects/ball-astronomy/still-03-1920.webp 1920w" sizes="(max-width: 900px) max(100vw, 150vh), 100vw" alt="" width="1920" height="1080"></figure>
+        <figure class="hero-slide"><img data-hero-src="assets/display/photography/studio/campus-panorama-1280.webp" data-hero-srcset="assets/display/photography/studio/campus-panorama-640.webp 640w, assets/display/photography/studio/campus-panorama-1280.webp 1280w, assets/display/photography/studio/campus-panorama-2600.webp 2600w" sizes="(max-width: 900px) max(100vw, 220vh), 100vw" alt="" width="2600" height="1147"></figure>
       </div>
       <div class="hero-scrim" aria-hidden="true"></div>
       <div class="hero-category" aria-hidden="true"><span class="brand-corner" data-brand-motion></span></div>
-      <div class="hero-name"><h1 id="heroTitle"><span class="hero-title-light">第二</span><span>人生</span></h1><p class="hero-index">Second Chapter Studio<span>高校与地方文化视听内容服务商</span></p><p class="hero-tagline">让故事，拥有再次被看见的可能。</p></div>
-      <div class="hero-summary"><p><span class="summary-line">从主题策划到完整成片，</span><span class="summary-line">以专业影像与 AI 创作<span class="summary-phrase">连接校园和地方。</span></span></p><a href="#work">观看精选作品<i data-lucide="play" aria-hidden="true"></i></a></div>
-      <div class="hero-progress" aria-label="封面切换"><button class="is-active" data-hero="0" aria-label="礼堂钢琴演出" aria-current="true"></button><button data-hero="1" aria-label="校园体育场航拍"></button><button data-hero="2" aria-label="一个球的故事，校园天文社项目"></button><span id="heroCount">01 / 03</span></div>
-      <button id="heroPause" class="icon-button hero-pause" type="button" aria-label="暂停封面轮播" title="暂停封面轮播"><i data-lucide="pause" aria-hidden="true"></i></button>
+      <div class="hero-name"><h1 id="heroTitle"><span class="hero-title-part">第二</span><span>人生</span></h1><p class="hero-index">Second Chapter Studio<span>高校与地方文化视听内容服务商</span></p><p class="hero-tagline">让故事，拥有再次被看见的可能。</p></div>
+      <div class="hero-summary"><p><span class="summary-line">从主题策划到完整成片，</span><span class="summary-line">以专业影像与 AI 创作<span class="summary-phrase">连接校园和地方。</span></span></p></div>
+      <div class="hero-progress" aria-label="封面切换"><button class="is-active" data-hero="0" aria-label="礼堂钢琴演出" aria-current="true"></button><button data-hero="1" aria-label="校园体育场航拍"></button><button data-hero="2" aria-label="一个球的故事，校园天文社项目"></button><button data-hero="3" aria-label="校园全景航拍"></button><span id="heroCount">01 / 04</span></div>
+      <div class="hero-actions"><a class="hero-work" href="#work">观看精选作品<i data-lucide="play" aria-hidden="true"></i></a><button id="heroPause" class="icon-button hero-pause" type="button" aria-label="暂停封面轮播" title="暂停封面轮播"><i data-lucide="pause" aria-hidden="true"></i></button></div>
     </section>
 
     <section class="studio-intro section-shell reveal" aria-labelledby="introTitle">
@@ -75,7 +76,7 @@
       <header class="section-heading"><p class="section-label">精选案例</p><h2 id="workTitle">先看看作品，再认识我们。</h2><p class="work-description"><span>高校宣传、青年叙事与地方文化。</span><span>收录工作室及主创参与的代表项目。</span></p></header>
       <div id="caseFilters" class="case-filters" role="group" aria-label="案例分类"></div>
       <div id="caseGrid" class="case-grid" aria-live="polite"></div>
-      <div class="case-more"><button id="moreCases" class="text-button" type="button">查看其余精选案例<i data-lucide="plus" aria-hidden="true"></i></button><span id="caseCount"></span></div>
+      <div class="case-more"><button id="moreCases" class="text-button" type="button">查看更多作品<i data-lucide="plus" aria-hidden="true"></i></button><span id="caseCount"></span></div>
       <div class="photo-heading"><h3>静态影像，也是一种表达。</h3><p>校园空间、人物与地方现场的摄影选辑。</p></div>
       <div id="photoGrid" class="photo-grid" aria-label="摄影选辑"></div>
     </section>
