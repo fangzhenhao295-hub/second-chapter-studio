@@ -197,7 +197,7 @@
     if(reduced.matches||document.hidden||!hero.animate||hero.getBoundingClientRect().bottom<=0) return;
     heroCopyAnimations=heroCopy.map((element,index)=>element.animate(
       [{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],
-      {duration:initial?650:900,delay:initial?[0,30,100][index]:700+[0,120,260][index],easing:'cubic-bezier(.22,.65,.26,1)',fill:'backwards'}
+      {duration:900,delay:(initial?450:700)+[0,120,260][index],easing:'cubic-bezier(.22,.65,.26,1)',fill:'backwards'}
     ));
   }
   function finishHeroIntro(animateCopy=true) {
@@ -227,7 +227,7 @@
     try {
       const source=slides[0].querySelector('img');
       const image=source.cloneNode(false);
-      image.className='hero-intro-image';
+      image.className='hero-intro-image hero-intro-target';
       image.alt='';
       image.style.objectPosition=getComputedStyle(source).objectPosition;
       heroIntro=document.createElement('div');
@@ -272,9 +272,9 @@
       refreshIcons();
       try {await Promise.all([image.decode(),logo.decode()]);} catch {finishHeroIntro();return true;}
       if(!heroIntroActive) return true;
-      const aspect=image.naturalWidth/image.naturalHeight;
-      const position=getComputedStyle(source).objectPosition.split(' ').map(value=>parseFloat(value)/100);
       const coverBounds=(width,height,left=0,top=0)=>{
+        const aspect=image.naturalWidth/image.naturalHeight;
+        const position=getComputedStyle(source).objectPosition.split(' ').map(value=>parseFloat(value)/100);
         const imageWidth=Math.max(width,height*aspect),imageHeight=imageWidth/aspect;
         return {width:imageWidth,height:imageHeight,x:left+(width-imageWidth)*position[0],y:top+(height-imageHeight)*position[1]};
       };
@@ -283,12 +283,12 @@
       Object.assign(image.style,{width:`${fullImage.width}px`,height:`${fullImage.height}px`,transform:fullTransform});
       // Crossfade cached blur layers; avoid repainting a changing full-screen blur.
       const fog=fogLayers.map((layer,index)=>layer.animate([
-        {opacity:1,transform:'translate(0,0) scale(1)'},
-        {opacity:.72,transform:`translate(${index?-4:5}px,-3px) scale(1.015)`,offset:.35},
+        {opacity:index ? .22 : .42,transform:'translate(0,0) scale(1)'},
+        {opacity:index ? .12 : .26,transform:`translate(${index?-4:5}px,-3px) scale(1.015)`,offset:.35},
         {opacity:0,transform:`translate(${index?-12:14}px,-10px) scale(1.045)`}
       ],{duration:index?1250:1450,delay:index?100:0,easing:'cubic-bezier(.3,.05,.45,1)',fill:'forwards'}));
       const clear=wash.animate([{opacity:1},{opacity:0}],{duration:1450,easing:'ease-in-out',fill:'forwards'});
-      const logoIn=logo.animate([{opacity:0},{opacity:1}],{duration:220,easing:'ease-out',fill:'forwards'});
+      const logoIn=logo.animate([{opacity:0},{opacity:1}],{duration:420,easing:'ease-out',fill:'forwards'});
       heroIntroAnimations.push(...fog,clear,logoIn);
       clear.finished.then(()=>{if(heroIntroActive&&heroIntro)heroIntro.dataset.phase='hold';}).catch(()=>{});
       heroIntroTimer=setTimeout(()=>{
@@ -337,7 +337,7 @@
     $('.hero').dataset.index=String(index);
     slides.forEach((slide,i)=>slide.classList.toggle('is-active',i===index));
     controls.forEach((button,i)=>{button.classList.toggle('is-active',i===index);if(i===index)button.setAttribute('aria-current','true');else button.removeAttribute('aria-current');});
-    $('#heroCount').textContent=`${String(index+1).padStart(2,'0')} / 03`;
+    $('#heroCount').textContent=`${String(index+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;
     revealHeroCopy();
     scheduleHero();
   }
@@ -443,7 +443,7 @@
   renderFilters();renderCases();refreshIcons();setHeroPause(heroPaused);
   (async()=>{
     if(await startHeroIntro()) return;
-    try {await slides[0].querySelector('img').decode();} catch {}
+    try {await slides[heroIndex].querySelector('img').decode();} catch {}
     if(heroRequest===0) revealHeroCopy(true);
     requestAnimationFrame(()=>playBrandMotion({fromClosed:true}));
   })();
