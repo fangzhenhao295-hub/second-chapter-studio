@@ -241,8 +241,6 @@ body,button,input,select,textarea,dialog{font-family:var(--font-ui)}
 .intro-content h2{font-size:36px}
 @media(min-width:901px){.intro-content>p{max-width:none;text-wrap:pretty}}
 .intro-facts p{border-top:0;padding-top:0}
-.intro-facts .intro-fact-icon{display:flex;align-items:center;gap:8px;width:64px;height:32px;margin-bottom:8px;color:var(--accent)}
-.intro-fact-icon svg{width:28px;height:28px;stroke-width:1.6}
 .process-list li{border-top:0;padding-top:0}
 .process-marker{display:flex;align-items:center;gap:12px;height:32px;margin-bottom:18px;color:var(--accent)}
 .process-marker svg{width:28px;height:28px;stroke-width:1.6}
