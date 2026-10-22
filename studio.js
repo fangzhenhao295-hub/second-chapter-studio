@@ -62,6 +62,10 @@
     const button = event.target.closest('[data-case]');
     if (button) openCase(button.dataset.case);
   });
+  $('#process').addEventListener('click', event => {
+    const button = event.target.closest('button[data-case]');
+    if (button) openCase(button.dataset.case);
+  });
 
   $('#photoGrid').innerHTML = data.photos.map((photo,index) => `<button type="button" data-photo="${index}" aria-label="查看${escape(photo.alt)}"><img src="${escape(photo.src)}"${photo.srcSet ? ` srcset="${escape(photo.srcSet)}" sizes="(max-width: 900px) 30vw, 16vw"` : ''} alt="${escape(photo.alt)}" width="${photo.width||400}" height="${photo.height||500}" loading="lazy" decoding="async"></button>`).join('');
   $('#photoGrid').addEventListener('click', event => {
