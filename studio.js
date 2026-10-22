@@ -5,8 +5,9 @@
   const $ = selector => document.querySelector(selector);
   const $$ = selector => [...document.querySelectorAll(selector)];
   const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  const icon = name => `<i data-lucide="${name}" aria-hidden="true"></i>`;
+  const icon = name => ['arrow-up-right','external-link'].includes(name) ? '<svg class="link-asterisk" aria-hidden="true"><use href="#link-asterisk"/></svg>' : `<i data-lucide="${name}" aria-hidden="true"></i>`;
   const refreshIcons = () => window.lucide?.createIcons({attrs:{'stroke-width':1.6}});
+  $$('[data-lucide="arrow-up-right"],[data-lucide="external-link"]').forEach(element=>{element.outerHTML=icon('arrow-up-right');});
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   let filter = 'all';
   let visibleCases = 6;
