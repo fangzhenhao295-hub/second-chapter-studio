@@ -4,11 +4,11 @@ window.STUDIO_DATA = {
       "id": "foreign-language",
       "format": "promo",
       "no": "11",
-      "title": "外国语学院招生宣传片",
+      "title": "向海而生，语通世界",
       "year": "2026.07",
       "category": "commissioned",
       "relation": "学院委托 / 后期制作",
-      "type": "中英文招生宣传片",
+      "type": "外国语学院中英文招生宣传片",
       "role": "导演 / 剪辑 / 后期制作",
       "credits": [
         {"role": "导演 / 后期", "name": "方卓煌"},
@@ -330,9 +330,9 @@ window.STUDIO_DATA = {
     {
       "id": "maritime-language-services",
       "format": "promo",
-      "title": "海丝文旅讲解",
+      "title": "外国语学院国际传播与语言服务展示宣传片",
       "year": "2025.06",
-      "type": "外国语学院国际传播与语言服务展示（英文视频）",
+      "type": "英文版",
       "summary": "泉州师范学院外国语学院国际传播与语言服务展示，以英文视频呈现海丝文旅讲解。",
       "links": [
         {

@@ -12,7 +12,6 @@
   let filter = 'all';
   let visibleCases = 6;
   const categories = [{id:'all',title:'全部作品'},{id:'promo',title:'宣传与专题'},{id:'documentary',title:'纪录与短片'},{id:'events',title:'活动与演出'},{id:'brand',title:'品牌视觉'}];
-  const formatNames = Object.fromEntries(categories.map(item => [item.id,item.title]));
   const matching = id => data.projects.filter(item => id === 'all' || item.format === id);
   const platform = url => {
     const host = new URL(url).hostname;
@@ -23,7 +22,7 @@
   const external = (link, label, className = '', iconName = 'arrow-up-right') => `<a class="${className}" href="${escape(link.href)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(label)}，${platform(link.href)}，在新窗口打开">${escape(label)}${icon(iconName)}</a>`;
 
   function renderFilters() {
-    $('#caseFilters').innerHTML = categories.map(item => `<button type="button" class="${item.id === filter ? 'is-active' : ''}" data-filter="${item.id}" aria-pressed="${item.id === filter}">${item.title}<span>${String(matching(item.id).length).padStart(2,'0')}</span></button>`).join('');
+    $('#caseFilters').innerHTML = categories.map(item => `<button type="button" class="${item.id === filter ? 'is-active' : ''}" data-filter="${item.id}" aria-pressed="${item.id === filter}">${item.title}</button>`).join('');
   }
 
   function renderCases() {
@@ -34,8 +33,8 @@
         <button class="case-image ${project.coverFit === 'contain' || project.id === 'oxs' ? 'is-original' : ''}" type="button" data-case="${project.id}" aria-label="查看《${escape(project.title)}》案例图集" title="查看案例图集">
           <img src="${escape(project.cover)}"${project.coverImage?.srcSet ? ` srcset="${escape(project.coverImage.srcSet)}" sizes="(max-width: 560px) 92vw, (max-width: 900px) 46vw, 40vw"` : ''} alt="《${escape(project.title)}》项目封面" width="${project.coverImage?.width||1400}" height="${project.coverImage?.height||787}" loading="lazy" decoding="async">
         </button>
-        <div class="case-meta"><span>${formatNames[project.format]}</span>${project.year ? `<span>${escape(project.year)}</span>` : ''}</div>
-        <h3>${escape(project.title)}</h3><p class="case-type">${escape(project.type)}</p>
+        <div class="case-heading"><h3>${escape(project.title)}</h3>${project.year ? `<span class="case-year">${escape(project.year)}</span>` : ''}</div>
+        <p class="case-type">${escape(project.type)}</p>
         <div class="case-actions">${project.links.length ? external(project.links[0], watchLabel(project), 'case-watch', watchIcon(project)) : ''}<button type="button" class="case-detail" data-case="${project.id}">案例详情${icon('circle')}</button></div>
       </article>`).join('');
     $('#moreCases').hidden = shown.length >= projects.length;
@@ -229,7 +228,7 @@
   $$('.site-header a').forEach(link=>link.addEventListener('click',()=>setMenu(false)));
   document.addEventListener('click',event=>{if(!header.contains(event.target)) setMenu(false);});
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&header.classList.contains('is-menu-open')) {setMenu(false);menu.focus();}});
-  window.matchMedia('(min-width:901px)').addEventListener('change',()=>setMenu(false));
+  window.matchMedia('(min-width:701px)').addEventListener('change',()=>setMenu(false));
 
   const slides=$$('.hero-slide');
   const controls=$$('[data-hero]');
@@ -289,7 +288,7 @@
     document.documentElement.classList.remove('hero-intro-pending');
     if(animateCopy) revealHeroCopy(true);
     else finishHeroCopy();
-    if(hadFocus) $('#heroPause').focus({preventScroll:true});
+    if(hadFocus) controls[heroIndex].focus({preventScroll:true});
     scheduleHero();
   }
   async function startHeroIntro() {
@@ -333,7 +332,7 @@
       logoCorner.className='brand-corner brand-logo-corner intro-logo-corner';
       logoCorner.setAttribute('aria-hidden','true');
       logo.append(logoImage,logoCorner);
-      const logoWidth=Math.min(220,innerWidth*.44);
+      const logoWidth=Math.min(460,innerWidth*.8);
       const logoHeight=logoWidth*880/1788;
       Object.assign(logo.style,{left:`${(innerWidth-logoWidth)/2}px`,top:`${(innerHeight-logoHeight)/2}px`,width:`${logoWidth}px`,height:`${logoHeight}px`});
       const skip=document.createElement('button');
@@ -383,7 +382,7 @@
         const clear=image.animate([{opacity:.12},{opacity:1}],{duration:3400,delay:150,easing:'ease-in-out',fill:'forwards'});
         const washOut=wash.animate([{opacity:1},{opacity:0}],{duration:3200,easing:'ease-in-out',fill:'forwards'});
         const logoBounds=logo.getBoundingClientRect();
-        const target=$('.brand-wordmark-art').getBoundingClientRect();
+        const target=$('.hero-brand .brand-wordmark-art').getBoundingClientRect();
         const logoHome=logo.animate(settleFrames(progress=>({
           transform:`translate(${(target.left-logoBounds.left)*progress}px,${(target.top-logoBounds.top)*progress}px) scale(${mix(1,target.width/logoBounds.width,progress)})`
         }),4.8),{duration:2600,delay:750,easing:'linear',fill:'forwards'});
@@ -404,7 +403,7 @@
     }
     return true;
   }
-  let heroIndex=0,heroTimer=0,heroPaused=reduced.matches,heroRequest=0;
+  let heroIndex=0,heroTimer=0,heroPaused=reduced.matches,heroInteracted=false,heroRequest=0;
   async function selectHero(index) {
     clearTimeout(heroTimer);
     const request=++heroRequest;
@@ -424,8 +423,7 @@
     $('.hero').dataset.index=String(index);
     slides.forEach((slide,i)=>slide.classList.toggle('is-active',i===index));
     controls.forEach((button,i)=>{button.classList.toggle('is-active',i===index);if(i===index)button.setAttribute('aria-current','true');else button.removeAttribute('aria-current');});
-    $('#heroCount').textContent=`${String(index+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;
-    revealHeroCopy();
+    finishHeroCopy();
     scheduleHero();
   }
   function scheduleHero() {
@@ -434,14 +432,16 @@
   }
   function setHeroPause(paused) {
     heroPaused=paused;
-    $('#heroPause').innerHTML=icon(paused?'play':'pause');
-    $('#heroPause').setAttribute('aria-label',paused?'播放封面轮播':'暂停封面轮播');
-    $('#heroPause').title=paused?'播放封面轮播':'暂停封面轮播';
-    refreshIcons();scheduleHero();
+    scheduleHero();
   }
-  controls.forEach(button=>button.addEventListener('click',()=>selectHero(Number(button.dataset.hero))));
-  $('#heroPause').addEventListener('click',()=>setHeroPause(!heroPaused));
-  hero.addEventListener('focusin',event=>{if(event.target.closest('.hero-summary,.hero-work')) finishHeroCopy();});
+  controls.forEach(button=>{
+    button.setAttribute('aria-label',`${button.getAttribute('aria-label')}，切换并停止自动轮播`);
+    button.addEventListener('click',()=>{heroInteracted=true;setHeroPause(true);selectHero(Number(button.dataset.hero));});
+  });
+  hero.addEventListener('focusin',event=>{
+    heroInteracted=true;setHeroPause(true);
+    if(event.target.closest('.hero-summary,.hero-work')) finishHeroCopy();
+  });
   document.addEventListener('visibilitychange',scheduleHero);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)finishHeroCopy();});
   document.addEventListener('visibilitychange',()=>{if(document.hidden) finishHeroIntro(false);});
@@ -450,7 +450,7 @@
   window.addEventListener('pagehide',()=>finishHeroIntro(false));
   window.addEventListener('studio:intro-timeout',()=>finishHeroIntro(false));
   caseDialog.addEventListener('close',scheduleHero);
-  reduced.addEventListener('change',()=>{setHeroPause(reduced.matches);if(reduced.matches){finishHeroIntro(false);finishHeroCopy();}});
+  reduced.addEventListener('change',()=>{setHeroPause(reduced.matches||heroInteracted);if(reduced.matches){finishHeroIntro(false);finishHeroCopy();}});
 
   const brandMarks=$$('[data-brand-motion]');
   let brandMotionTimer=0;
