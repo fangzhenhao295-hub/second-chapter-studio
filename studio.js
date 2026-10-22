@@ -31,7 +31,7 @@
     $('#caseGrid').innerHTML = shown.map(project => `
       <article class="case-card">
         <button class="case-image ${project.coverFit === 'contain' || project.id === 'oxs' ? 'is-original' : ''}" type="button" data-case="${project.id}" aria-label="查看《${escape(project.title)}》案例图集" title="查看案例图集">
-          <img src="${escape(project.cover)}"${project.coverImage?.srcSet ? ` srcset="${escape(project.coverImage.srcSet)}" sizes="(max-width: 560px) 46vw, (max-width: 900px) 46vw, 31vw"` : ''} alt="《${escape(project.title)}》项目封面" width="${project.coverImage?.width||1400}" height="${project.coverImage?.height||787}" loading="lazy" decoding="async">
+          <img src="${escape(project.cover)}"${project.coverImage?.srcSet ? ` srcset="${escape(project.coverImage.srcSet)}" sizes="(max-width: 560px) 92vw, (max-width: 900px) 46vw, 40vw"` : ''} alt="《${escape(project.title)}》项目封面" width="${project.coverImage?.width||1400}" height="${project.coverImage?.height||787}" loading="lazy" decoding="async">
         </button>
         <div class="case-meta"><span>${formatNames[project.format]}</span>${project.year ? `<span>${escape(project.year)}</span>` : ''}</div>
         <h3>${escape(project.title)}</h3><p class="case-type">${escape(project.type)}</p>
@@ -62,10 +62,6 @@
     const button = event.target.closest('[data-case]');
     if (button) openCase(button.dataset.case);
   });
-  $('#process').addEventListener('click', event => {
-    const button = event.target.closest('button[data-case]');
-    if (button) openCase(button.dataset.case);
-  });
 
   $('#photoGrid').innerHTML = data.photos.map((photo,index) => `<button type="button" data-photo="${index}" aria-label="查看${escape(photo.alt)}"><img src="${escape(photo.src)}"${photo.srcSet ? ` srcset="${escape(photo.srcSet)}" sizes="(max-width: 900px) 30vw, 16vw"` : ''} alt="${escape(photo.alt)}" width="${photo.width||400}" height="${photo.height||500}" loading="lazy" decoding="async"></button>`).join('');
   $('#photoGrid').addEventListener('click', event => {
@@ -76,6 +72,25 @@
   $$('.service-item').forEach(item => item.addEventListener('toggle', () => {
     if (item.open) $$('.service-item').forEach(other => {if(other !== item) other.open = false;});
   }));
+  const memberButtons=$$('[data-member]');
+  memberButtons.forEach((button,index)=>{
+    button.addEventListener('click',()=>{
+      const open=button.getAttribute('aria-expanded')!=='true';
+      memberButtons.forEach(other=>{
+        const selected=other===button&&open;
+        other.setAttribute('aria-expanded',String(selected));
+        document.getElementById(other.dataset.member).hidden=!selected;
+      });
+    });
+    button.addEventListener('keydown',event=>{
+      let next;
+      if(event.key==='ArrowRight')next=(index+1)%memberButtons.length;
+      else if(event.key==='ArrowLeft')next=(index-1+memberButtons.length)%memberButtons.length;
+      else if(event.key==='Home')next=0;
+      else if(event.key==='End')next=memberButtons.length-1;
+      if(next!==undefined){event.preventDefault();memberButtons[next].focus();}
+    });
+  });
 
   const caseDialog = $('#caseDialog');
   let activeProject = null;
@@ -186,8 +201,21 @@
   const slides=$$('.hero-slide');
   const controls=$$('[data-hero]');
   const hero=$('.hero');
-  const heroCopy=[$('.hero-category'),$('.hero-name'),$('.hero-work')];
-  const heroSummary=$('.hero-summary>p');
+  const heroSummary=$('.hero-summary');
+  if('IntersectionObserver' in window){
+    let headerObserver;
+    const observeHeader=()=>{
+      headerObserver?.disconnect();
+      headerObserver=new IntersectionObserver(entries=>{
+        const over=entries[0].isIntersecting;
+        header.classList.toggle('is-over-hero',over);
+        if(over)$$('.main-nav a').forEach(link=>{link.classList.remove('is-active');link.removeAttribute('aria-current');});
+      },{rootMargin:`-${header.offsetHeight}px 0px 0px 0px`,threshold:0});
+      headerObserver.observe(hero);
+    };
+    observeHeader();
+    if('ResizeObserver' in window)new ResizeObserver(observeHeader).observe(header);
+  }else header.classList.remove('is-over-hero');
   let heroCopyAnimations=[];
   let heroIntroActive=document.documentElement.classList.contains('hero-intro-pending');
   let heroIntro=null,heroIntroTimer=0;
@@ -209,14 +237,10 @@
   function revealHeroCopy(initial=false) {
     finishHeroCopy();
     if(reduced.matches||document.hidden||!hero.animate||hero.getBoundingClientRect().bottom<=0) return;
-    heroCopyAnimations=heroCopy.map((element,index)=>element.animate(
-      [{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],
-      {duration:900,delay:(initial?450:700)+[0,120,260][index],easing:'cubic-bezier(.22,.65,.26,1)',fill:'backwards'}
-    ));
-    heroCopyAnimations.push(heroSummary.animate(
-      [{opacity:0,transform:'translateX(28px)'},{opacity:1,transform:'translateX(0)'}],
-      {duration:850,delay:(initial?450:700)+1260,easing:'cubic-bezier(.2,.7,.25,1)',fill:'backwards'}
-    ));
+    heroCopyAnimations=[heroSummary.animate(
+      [{opacity:0,transform:'translateX(24px)'},{opacity:1,transform:'translateX(0)'}],
+      {duration:850,delay:initial?450:350,easing:'cubic-bezier(.2,.7,.25,1)',fill:'backwards'}
+    )];
   }
   function finishHeroIntro(animateCopy=true) {
     if(!heroIntroActive) return;
@@ -297,51 +321,43 @@
         return {width:imageWidth,height:imageHeight,x:left+(width-imageWidth)*position[0],y:top+(height-imageHeight)*position[1]};
       };
       const fullImage=coverBounds(innerWidth,innerHeight);
-      const fullTransform=`translate(${fullImage.x}px,${fullImage.y}px) scale(1)`;
-      Object.assign(image.style,{width:`${fullImage.width}px`,height:`${fullImage.height}px`,transform:fullTransform});
+      const mix=(start,end,progress)=>start+(end-start)*progress;
+      const cameraTransform=progress=>{
+        const scale=mix(1.22,1,progress);
+        return `translate(${innerWidth/2+(fullImage.x-innerWidth/2)*scale}px,${innerHeight/2+(fullImage.y-innerHeight/2)*scale}px) scale(${scale})`;
+      };
+      Object.assign(image.style,{width:`${fullImage.width}px`,height:`${fullImage.height}px`,transform:cameraTransform(0)});
       fogLayers.forEach(layer=>Object.assign(layer.firstElementChild.style,{
-        width:`${fullImage.width}px`,height:`${fullImage.height}px`,transform:fullTransform
+        width:`${fullImage.width}px`,height:`${fullImage.height}px`,transform:cameraTransform(0)
       }));
-      // Crossfade cached blur layers; avoid repainting a changing full-screen blur.
+      // Pull the camera back while cached blur layers dissolve into the sharp image.
+      const camera=[image,...fogLayers.map(layer=>layer.firstElementChild)].map(layer=>layer.animate(
+        settleFrames(progress=>({transform:cameraTransform(progress)}),5.2),
+        {duration:3850,delay:350,easing:'linear',fill:'forwards'}
+      ));
       const fog=fogLayers.map((layer,index)=>layer.animate([
-        {opacity:index ? .16 : .3,transform:'translate(0,0) scale(1)'},
-        {opacity:index ? .1 : .2,transform:`translate(${index?-2:4}px,-2px) scale(1.012)`,offset:.35},
-        {opacity:0,transform:`translate(${index?-9:12}px,-7px) scale(1.045)`}
-      ],{duration:index?1350:1450,delay:index?100:0,easing:'cubic-bezier(.25,.1,.35,1)',fill:'forwards'}));
-      const focus=image.animate([
-        {transform:`translate(${fullImage.x-fullImage.width*.006}px,${fullImage.y-fullImage.height*.006}px) scale(1.012)`},
-        {transform:fullTransform}
-      ],{duration:1500,easing:'cubic-bezier(.2,.6,.3,1)',fill:'forwards'});
-      const clear=wash.animate([{opacity:1},{opacity:0}],{duration:1450,easing:'ease-in-out',fill:'forwards'});
-      const logoIn=logo.animate([{opacity:0},{opacity:1}],{duration:420,easing:'ease-out',fill:'forwards'});
-      heroIntroAnimations.push(...fog,focus,clear,logoIn);
-      clear.finished.then(()=>{if(heroIntroActive&&heroIntro)heroIntro.dataset.phase='hold';}).catch(()=>{});
+        {opacity:index ? .32 : 1},
+        {opacity:index ? .28 : .82,offset:.3},
+        {opacity:0}
+      ],{duration:index?3900:3700,delay:index?200:400,easing:'cubic-bezier(.25,.1,.35,1)',fill:'forwards'}));
+      const clear=image.animate([{opacity:.12},{opacity:1}],{duration:3400,delay:500,easing:'ease-in-out',fill:'forwards'});
+      const washOut=wash.animate([{opacity:1},{opacity:0}],{duration:3200,delay:300,easing:'ease-in-out',fill:'forwards'});
+      const logoIn=logo.animate([
+        {opacity:0,filter:'brightness(0) invert(1) blur(8px)'},
+        {opacity:1,filter:'brightness(0) invert(1) blur(0px)'}
+      ],{duration:1000,delay:100,easing:'ease-out',fill:'forwards'});
+      heroIntroAnimations.push(...camera,...fog,clear,washOut,logoIn);
       heroIntroTimer=setTimeout(()=>{
         if(!heroIntroActive) return;
-        heroIntro.dataset.phase='shrinking';
-        const bounds=hero.getBoundingClientRect();
-        const radius=getComputedStyle(hero).borderRadius;
-        const timing={duration:1650,easing:'linear',fill:'forwards'};
-        const mix=(start,end,progress)=>start+(end-start)*progress;
-        const shrink=card.animate(settleFrames(progress=>({
-          clipPath:`inset(${bounds.top*progress}px ${(innerWidth-bounds.right)*progress}px ${(innerHeight-bounds.bottom)*progress}px ${bounds.left*progress}px round ${parseFloat(radius)*progress}px)`
-        })),timing);
-        const finalImage=coverBounds(bounds.width,bounds.height,bounds.left,bounds.top);
-        const settle=image.animate(settleFrames(progress=>({
-          transform:`translate(${mix(fullImage.x,finalImage.x,progress)}px,${mix(fullImage.y,finalImage.y,progress)}px) scale(${mix(1,finalImage.width/fullImage.width,progress)})`
-        }),6.8),timing);
-        const scrimSettle=scrim.animate(settleFrames(progress=>({
-          transform:`translate(${bounds.left*progress}px,${bounds.top*progress}px) scale(${mix(1,bounds.width/innerWidth,progress)},${mix(1,bounds.height/innerHeight,progress)})`
-        })),timing);
+        heroIntro.dataset.phase='pullback';
         const logoBounds=logo.getBoundingClientRect();
         const target=$('.brand-wordmark-art').getBoundingClientRect();
         const logoHome=logo.animate(settleFrames(progress=>({
-          transform:`translate(${(target.left-logoBounds.left)*progress}px,${(target.top-logoBounds.top)*progress}px) scale(${mix(1,target.width/logoBounds.width,progress)})`,
-          filter:`brightness(0) invert(${1-Math.max(0,(progress-.75)/.25)})`
-        }),7),timing);
-        heroIntroAnimations.push(shrink,settle,scrimSettle,logoHome);
-        Promise.all([shrink.finished,settle.finished,logoHome.finished]).then(()=>finishHeroIntro()).catch(()=>{});
-      },1500);
+          transform:`translate(${(target.left-logoBounds.left)*progress}px,${(target.top-logoBounds.top)*progress}px) scale(${mix(1,target.width/logoBounds.width,progress)})`
+        }),4.8),{duration:2600,easing:'linear',fill:'forwards'});
+        heroIntroAnimations.push(logoHome);
+        Promise.all([...camera.map(animation=>animation.finished),...fog.map(animation=>animation.finished),logoHome.finished]).then(()=>finishHeroIntro()).catch(()=>{});
+      },1100);
     } catch {
       finishHeroIntro();
     }
@@ -415,9 +431,9 @@
     });
     brandMotionTimer=setTimeout(stopBrandMotion,1400);
   }
-  [$('.brand'),$('.hero-category')].forEach(target=>target.addEventListener('pointerenter',event=>{
+  $('.brand').addEventListener('pointerenter',event=>{
     if(event.pointerType!=='touch') playBrandMotion();
-  }));
+  });
   $('.brand').addEventListener('focus',playBrandMotion);
   $('.brand').addEventListener('pointerdown',event=>{if(event.pointerType==='touch') playBrandMotion();});
   document.addEventListener('visibilitychange',()=>{if(document.hidden) stopBrandMotion();});
