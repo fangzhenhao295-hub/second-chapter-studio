@@ -18,7 +18,8 @@
     return host.includes('douyin') ? '抖音' : host.includes('weixin') ? '视频号' : host.includes('baidu') ? '百度网盘' : '品牌网站';
   };
   const watchLabel = project => project.id === 'oxs' ? '查看品牌网站' : project.id === 'foreign-language' ? '观看中英文成片' : '观看完整影片';
-  const external = (link, label, className = '') => `<a class="${className}" href="${escape(link.href)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(label)}，${platform(link.href)}，在新窗口打开">${escape(label)}${icon('arrow-up-right')}</a>`;
+  const watchIcon = project => project.id === 'oxs' ? 'external-link' : 'play';
+  const external = (link, label, className = '', iconName = 'arrow-up-right') => `<a class="${className}" href="${escape(link.href)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(label)}，${platform(link.href)}，在新窗口打开">${escape(label)}${icon(iconName)}</a>`;
 
   function renderFilters() {
     $('#caseFilters').innerHTML = sectors.map(item => `<button type="button" class="${item.id === filter ? 'is-active' : ''}" data-filter="${item.id}" aria-pressed="${item.id === filter}">${item.title}<span>${String(matching(item.id).length).padStart(2,'0')}</span></button>`).join('');
@@ -29,12 +30,12 @@
     const shown = projects.slice(0, visibleCases);
     $('#caseGrid').innerHTML = shown.map(project => `
       <article class="case-card">
-        <button class="case-image ${project.id === 'oxs' ? 'is-original' : ''}" type="button" data-case="${project.id}" aria-label="查看《${escape(project.title)}》案例详情">
-          <img src="${escape(project.cover)}"${project.coverImage?.srcSet ? ` srcset="${escape(project.coverImage.srcSet)}" sizes="(max-width: 560px) 46vw, (max-width: 900px) 46vw, 31vw"` : ''} alt="《${escape(project.title)}》项目封面" width="${project.coverImage?.width||1400}" height="${project.coverImage?.height||787}" loading="lazy" decoding="async"><span class="case-open">${icon('arrow-up-right')}</span>
+        <button class="case-image ${project.id === 'oxs' ? 'is-original' : ''}" type="button" data-case="${project.id}" aria-label="查看《${escape(project.title)}》案例图集" title="查看案例图集">
+          <img src="${escape(project.cover)}"${project.coverImage?.srcSet ? ` srcset="${escape(project.coverImage.srcSet)}" sizes="(max-width: 560px) 46vw, (max-width: 900px) 46vw, 31vw"` : ''} alt="《${escape(project.title)}》项目封面" width="${project.coverImage?.width||1400}" height="${project.coverImage?.height||787}" loading="lazy" decoding="async">
         </button>
         <div class="case-meta"><span>${sectorNames[project.sector]}</span><span>${escape(project.year)}</span></div>
         <h3>${escape(project.title)}</h3><p class="case-type">${escape(project.type)}</p>
-        <div class="case-actions">${project.links.length ? external(project.links[0], watchLabel(project), 'case-watch') : '<span></span>'}<button type="button" class="case-detail" data-case="${project.id}">案例详情${icon('plus')}</button></div>
+        <div class="case-actions">${project.links.length ? external(project.links[0], watchLabel(project), 'case-watch', watchIcon(project)) : '<span></span>'}<button type="button" class="case-detail" data-case="${project.id}">案例详情${icon('plus')}</button></div>
       </article>`).join('');
     $('#moreCases').hidden = shown.length >= projects.length;
     $('#caseCount').textContent = `${String(shown.length).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}`;
@@ -95,11 +96,12 @@
     });
     frameIndex = 0;
     $('#dialogTitle').textContent = project.title;
-    $('#dialogPanel').innerHTML = `<h3>${escape(project.title)}</h3>${project.summary.split('\n').filter(Boolean).map(text=>`<p>${escape(text)}</p>`).join('')}<dl><div><dt>作品类型</dt><dd>${escape(project.type)}</dd></div><div><dt>方卓煌参与分工</dt><dd>${escape(project.role)}</dd></div><div><dt>项目成果</dt><dd>${escape(project.result)}</dd></div></dl>${project.links.map(link=>external(link,`${watchLabel(project)} · ${platform(link.href)}`)).join('')}`;
+    const credits=project.credits?.length ? project.credits : [{role:'方卓煌参与分工',name:project.role}];
+    $('#dialogPanel').innerHTML = `<h3>${escape(project.title)}</h3>${project.summary.split('\n').filter(Boolean).map(text=>`<p>${escape(text)}</p>`).join('')}<dl><div><dt>作品类型</dt><dd>${escape(project.type)}</dd></div>${credits.map(credit=>`<div><dt>${escape(credit.role)}</dt><dd>${escape(credit.name)}</dd></div>`).join('')}<div><dt>项目成果</dt><dd>${escape(project.result)}</dd></div></dl>${project.links.map(link=>external(link,`${watchLabel(project)} · ${platform(link.href)}`,'case-watch',watchIcon(project))).join('')}`;
     $('#dialogWatch').hidden = !project.links.length;
     if(project.links.length) {
       $('#dialogWatch').href = project.links[0].href;
-      $('#dialogWatch').innerHTML = `${watchLabel(project)}${icon('arrow-up-right')}`;
+      $('#dialogWatch').innerHTML = `${watchLabel(project)}${icon(watchIcon(project))}`;
     } else $('#dialogWatch').removeAttribute('href');
     setInfo(false);
     renderFrame();
@@ -180,8 +182,11 @@
   const slides=$$('.hero-slide');
   const controls=$$('[data-hero]');
   const hero=$('.hero');
-  const heroCopy=$$('.hero-index,.hero-category,.hero-name,.hero-summary');
+  const heroCopy=$$('.hero-category,.hero-name,.hero-summary');
   let heroCopyAnimations=[];
+  let heroIntroActive=document.documentElement.classList.contains('hero-intro-pending');
+  let heroIntro=null,heroIntroTimer=0;
+  let heroIntroAnimations=[],introInert=[];
   function finishHeroCopy() {
     heroCopyAnimations.forEach(animation=>animation.cancel());
     heroCopyAnimations=[];
@@ -192,8 +197,126 @@
     if(reduced.matches||document.hidden||!hero.animate||hero.getBoundingClientRect().bottom<=0) return;
     heroCopyAnimations=heroCopy.map((element,index)=>element.animate(
       [{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],
-      {duration:900,delay:(initial?450:700)+[0,80,200,350][index],easing:'cubic-bezier(.22,.65,.26,1)',fill:'backwards'}
+      {duration:initial?650:900,delay:initial?[0,30,100][index]:700+[0,120,260][index],easing:'cubic-bezier(.22,.65,.26,1)',fill:'backwards'}
     ));
+  }
+  function finishHeroIntro(animateCopy=true) {
+    if(!heroIntroActive) return;
+    const hadFocus=heroIntro?.contains(document.activeElement);
+    heroIntroActive=false;
+    clearTimeout(heroIntroTimer);
+    heroIntroAnimations.forEach(animation=>animation.cancel());
+    heroIntroAnimations=[];
+    heroIntro?.remove();
+    heroIntro=null;
+    introInert.forEach(([element,inert])=>{element.inert=inert;});
+    introInert=[];
+    document.documentElement.classList.remove('hero-intro-pending');
+    if(animateCopy) revealHeroCopy(true);
+    else finishHeroCopy();
+    if(hadFocus) $('#heroPause').focus({preventScroll:true});
+    playBrandMotion({fromClosed:true});
+    scheduleHero();
+  }
+  async function startHeroIntro() {
+    if(!heroIntroActive) return false;
+    if(reduced.matches||document.hidden||window.scrollY>10||!hero.animate) {
+      finishHeroIntro(false);
+      return true;
+    }
+    try {
+      const source=slides[0].querySelector('img');
+      const image=source.cloneNode(false);
+      image.className='hero-intro-image';
+      image.alt='';
+      image.style.objectPosition=getComputedStyle(source).objectPosition;
+      heroIntro=document.createElement('div');
+      heroIntro.className='hero-intro';
+      heroIntro.dataset.phase='frost';
+      const card=document.createElement('div');
+      card.className='hero-intro-card';
+      card.setAttribute('aria-hidden','true');
+      const scrim=document.createElement('div');
+      scrim.className='hero-intro-scrim';
+      scrim.style.background=getComputedStyle($('.hero-scrim')).background;
+      const wash=document.createElement('div');
+      wash.className='hero-intro-wash';
+      const fogLayers=['frost','haze'].map(name=>{
+        const layer=document.createElement('div');
+        layer.className=`hero-intro-fog hero-intro-${name}`;
+        const blurred=source.cloneNode(false);
+        blurred.alt='';
+        blurred.style.objectPosition=getComputedStyle(source).objectPosition;
+        layer.append(blurred);
+        return layer;
+      });
+      const logo=document.createElement('img');
+      logo.className='hero-intro-logo';
+      logo.src=$('.brand img').src;
+      logo.alt='第二人生 Second Chapter Studio';
+      const logoWidth=Math.min(220,innerWidth*.44);
+      const logoHeight=logoWidth*880/1788;
+      Object.assign(logo.style,{left:`${(innerWidth-logoWidth)/2}px`,top:`${(innerHeight-logoHeight)/2}px`,width:`${logoWidth}px`,height:`${logoHeight}px`});
+      const skip=document.createElement('button');
+      skip.className='icon-button hero-intro-skip';
+      skip.type='button';
+      skip.setAttribute('aria-label','跳过开场');
+      skip.title='跳过开场';
+      skip.innerHTML=icon('x');
+      skip.addEventListener('click',()=>finishHeroIntro());
+      card.append(image,...fogLayers,scrim,wash);
+      heroIntro.append(card,logo,skip);
+      introInert=[...document.body.children].filter(element=>element.tagName!=='SCRIPT').map(element=>[element,element.inert]);
+      introInert.forEach(([element])=>{element.inert=true;});
+      document.body.append(heroIntro);
+      refreshIcons();
+      try {await Promise.all([image.decode(),logo.decode()]);} catch {finishHeroIntro();return true;}
+      if(!heroIntroActive) return true;
+      const aspect=image.naturalWidth/image.naturalHeight;
+      const position=getComputedStyle(source).objectPosition.split(' ').map(value=>parseFloat(value)/100);
+      const coverBounds=(width,height,left=0,top=0)=>{
+        const imageWidth=Math.max(width,height*aspect),imageHeight=imageWidth/aspect;
+        return {width:imageWidth,height:imageHeight,x:left+(width-imageWidth)*position[0],y:top+(height-imageHeight)*position[1]};
+      };
+      const fullImage=coverBounds(innerWidth,innerHeight);
+      const fullTransform=`translate(${fullImage.x}px,${fullImage.y}px) scale(1)`;
+      Object.assign(image.style,{width:`${fullImage.width}px`,height:`${fullImage.height}px`,transform:fullTransform});
+      // Crossfade cached blur layers; avoid repainting a changing full-screen blur.
+      const fog=fogLayers.map((layer,index)=>layer.animate([
+        {opacity:1,transform:'translate(0,0) scale(1)'},
+        {opacity:.72,transform:`translate(${index?-4:5}px,-3px) scale(1.015)`,offset:.35},
+        {opacity:0,transform:`translate(${index?-12:14}px,-10px) scale(1.045)`}
+      ],{duration:index?1250:1450,delay:index?100:0,easing:'cubic-bezier(.3,.05,.45,1)',fill:'forwards'}));
+      const clear=wash.animate([{opacity:1},{opacity:0}],{duration:1450,easing:'ease-in-out',fill:'forwards'});
+      const logoIn=logo.animate([{opacity:0},{opacity:1}],{duration:220,easing:'ease-out',fill:'forwards'});
+      heroIntroAnimations.push(...fog,clear,logoIn);
+      clear.finished.then(()=>{if(heroIntroActive&&heroIntro)heroIntro.dataset.phase='hold';}).catch(()=>{});
+      heroIntroTimer=setTimeout(()=>{
+        if(!heroIntroActive) return;
+        heroIntro.dataset.phase='shrinking';
+        const bounds=hero.getBoundingClientRect();
+        const radius=getComputedStyle(hero).borderRadius;
+        const shrink=card.animate([
+          {clipPath:'inset(0px 0px 0px 0px round 0px)'},
+          {clipPath:`inset(${bounds.top}px ${innerWidth-bounds.right}px ${innerHeight-bounds.bottom}px ${bounds.left}px round ${radius})`}
+        ],{duration:1700,easing:'cubic-bezier(.76,0,.24,1)',fill:'forwards'});
+        const finalImage=coverBounds(bounds.width,bounds.height,bounds.left,bounds.top);
+        const settle=image.animate([{transform:fullTransform},{transform:`translate(${finalImage.x}px,${finalImage.y}px) scale(${finalImage.width/fullImage.width})`}],{duration:1700,easing:'cubic-bezier(.76,0,.24,1)',fill:'forwards'});
+        const scrimSettle=scrim.animate([{transform:'translate(0,0) scale(1,1)'},{transform:`translate(${bounds.left}px,${bounds.top}px) scale(${bounds.width/innerWidth},${bounds.height/innerHeight})`}],{duration:1700,easing:'cubic-bezier(.76,0,.24,1)',fill:'forwards'});
+        const logoBounds=logo.getBoundingClientRect();
+        const target=$('.brand-wordmark-art').getBoundingClientRect();
+        const logoHome=logo.animate([
+          {transform:'translate(0,0) scale(1)',filter:'brightness(0) invert(1)',offset:0},
+          {filter:'brightness(0) invert(1)',offset:.65},
+          {transform:`translate(${target.left-logoBounds.left}px,${target.top-logoBounds.top}px) scale(${target.width/logoBounds.width})`,filter:'brightness(0) invert(0)',offset:1}
+        ],{duration:1700,easing:'cubic-bezier(.76,0,.24,1)',fill:'forwards'});
+        heroIntroAnimations.push(shrink,settle,scrimSettle,logoHome);
+        shrink.finished.then(()=>finishHeroIntro()).catch(()=>{});
+      },1500);
+    } catch {
+      finishHeroIntro();
+    }
+    return true;
   }
   let heroIndex=0,heroTimer=0,heroPaused=reduced.matches,heroRequest=0;
   async function selectHero(index) {
@@ -220,7 +343,7 @@
   }
   function scheduleHero() {
     clearTimeout(heroTimer);
-    if(!heroPaused&&!document.hidden&&!caseDialog.open) heroTimer=setTimeout(()=>selectHero((heroIndex+1)%slides.length),6500);
+    if(!heroIntroActive&&!heroPaused&&!document.hidden&&!caseDialog.open) heroTimer=setTimeout(()=>selectHero((heroIndex+1)%slides.length),6500);
   }
   function setHeroPause(paused) {
     heroPaused=paused;
@@ -234,8 +357,13 @@
   hero.addEventListener('focusin',event=>{if(event.target.closest('.hero-summary')) finishHeroCopy();});
   document.addEventListener('visibilitychange',scheduleHero);
   document.addEventListener('visibilitychange',()=>{if(document.hidden) finishHeroCopy();});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden) finishHeroIntro(false);});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&heroIntroActive){event.preventDefault();finishHeroIntro();}});
+  window.addEventListener('resize',()=>finishHeroIntro(false));
+  window.addEventListener('pagehide',()=>finishHeroIntro(false));
+  window.addEventListener('studio:intro-timeout',()=>finishHeroIntro(false));
   caseDialog.addEventListener('close',scheduleHero);
-  reduced.addEventListener('change',()=>{setHeroPause(reduced.matches);if(reduced.matches) finishHeroCopy();});
+  reduced.addEventListener('change',()=>{setHeroPause(reduced.matches);if(reduced.matches){finishHeroIntro(false);finishHeroCopy();}});
 
   const brandMarks=$$('[data-brand-motion]');
   let brandMotionTimer=0;
@@ -245,7 +373,7 @@
     brandMarks.forEach(mark=>mark.classList.remove('is-animating','is-entering'));
   }
   function playBrandMotion({fromClosed=false}={}) {
-    if(reduced.matches||document.hidden||brandMotionTimer||$('dialog[open]')) return;
+    if(heroIntroActive||reduced.matches||document.hidden||brandMotionTimer||$('dialog[open]')) return;
     const visibleMarks=brandMarks.filter(mark=>{
       const bounds=mark.getBoundingClientRect();
       return bounds.width>0&&bounds.bottom>0&&bounds.top<window.innerHeight;
@@ -313,9 +441,10 @@
     $$('#work,#services,#ai,#team,#about').forEach(section=>activeNav.observe(section));
   }
   renderFilters();renderCases();refreshIcons();setHeroPause(heroPaused);
-  requestAnimationFrame(()=>playBrandMotion({fromClosed:true}));
   (async()=>{
+    if(await startHeroIntro()) return;
     try {await slides[0].querySelector('img').decode();} catch {}
     if(heroRequest===0) revealHeroCopy(true);
+    requestAnimationFrame(()=>playBrandMotion({fromClosed:true}));
   })();
 })();

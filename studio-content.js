@@ -8,8 +8,12 @@ window.STUDIO_DATA = {
       "category": "commissioned",
       "relation": "学院委托 / 后期制作",
       "type": "中英文招生宣传片",
-      "role": "剪辑 / 后期制作",
-      "summary": "基于前期团队提供的素材，独立完成中英文招生宣传片的剪辑与后期制作。\n围绕语言学习、国际传播与校园生活梳理内容结构，在两个语言版本中统一画面、信息层级与叙事节奏。",
+      "role": "导演 / 剪辑 / 后期制作",
+      "credits": [
+        {"role": "导演 / 后期", "name": "方卓煌"},
+        {"role": "拍摄", "name": "宋辰阳"}
+      ],
+      "summary": "由方卓煌负责导演与后期制作，宋辰阳负责拍摄，完成中英文招生宣传片。\n围绕语言学习、国际传播与校园生活梳理内容结构，在两个语言版本中统一画面、信息层级与叙事节奏。",
       "result": "2026 年 7 月完成中英文版本交付。",
       "link": "https://pan.baidu.com/s/1pCxYVk6oOslAbtUqXGc0BQ?pwd=hing",
       "linkLabel": "查看项目文件",
@@ -42,7 +46,12 @@ window.STUDIO_DATA = {
       "category": "authored",
       "relation": "原创音乐合作 / 毕业季共创",
       "type": "华为 MatePad Pro Max 音乐叙事短片",
-      "role": "导演 / 摄影 / 后期",
+      "role": "导演 / 后期",
+      "credits": [
+        {"role": "外联", "name": "赖泽涵"},
+        {"role": "导演", "name": "方卓煌"},
+        {"role": "拍摄", "name": "宋辰阳、陈鎛学"}
+      ],
       "summary": "毕业典礼散场之后，把青春里淋过的雨写成一首歌。\n作品以雨夜、离别与未完成的署名为线索，将原创音乐、校园记忆与产品创作场景组织成完整叙事。",
       "result": "抖音单条播放超 6 万，点赞约 2500；华为高校花粉挑战赛复赛入围。",
       "link": "https://v.douyin.com/BUnsKCL3WsU/",
@@ -659,6 +668,8 @@ window.STUDIO_DATA = {
       "role": "导演 / 摄影 / 后期",
       "summary": "以天文台中的一架望远镜为线索，记录连城一中天文社自 2003 年成立以来的观测、科普与社团传承。\n作品通过旧照片、历届成员口述和夜间观测现场组织叙事，并结合社员拍摄的深空影像，呈现一代代学生共同延续的校园记忆。",
       "result": "完成社团历史、成员口述与天文观测素材的整理及成片制作。",
+      "link": "https://weixin.qq.com/sph/AZHQxy3YPq",
+      "linkLabel": "观看完整影片",
       "visual": "cosmic",
       "cover": "assets/display/projects/ball-astronomy/cover-1280.webp",
       "media": [
@@ -784,7 +795,12 @@ window.STUDIO_DATA = {
         }
       ],
       "sector": "campus",
-      "links": [],
+      "links": [
+        {
+          "href": "https://weixin.qq.com/sph/AZHQxy3YPq",
+          "label": "观看完整影片"
+        }
+      ],
       "coverSource": "assets/projects/ball-astronomy/cover.jpg",
       "coverImage": {
         "src": "assets/display/projects/ball-astronomy/cover-1280.webp",

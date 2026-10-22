@@ -31,20 +31,19 @@
   <link rel="icon" href="assets/favicon-32.png?v=20261021-6" type="image/png" sizes="32x32">
   <link rel="icon" href="assets/favicon.svg?v=20261021-6" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=20261021-6" sizes="180x180">
-  <script>if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('hero-motion-ready');setTimeout(()=>document.documentElement.classList.remove('hero-motion-ready'),8000);}</script>
+  <script>if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('hero-motion-ready');if(!location.hash||location.hash==='#top')document.documentElement.classList.add('hero-intro-pending');setTimeout(()=>{document.documentElement.classList.remove('hero-motion-ready','hero-intro-pending');window.dispatchEvent(new Event('studio:intro-timeout'));},10000);}</script>
   <link rel="preload" href="assets/fonts/Outfit-Variable.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="assets/fonts/HarmonyOS-Sans-SC-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="studio.css?v=20261021-6">
+  <link rel="stylesheet" href="studio.css?v=20261022-1">
   <script src="assets/lucide.min.js" defer></script>
-  <script src="studio-content.js?v=20261021-6" defer></script>
-  <script src="studio.js?v=20261021-6" defer></script>
+  <script src="studio-content.js?v=20261022-1" defer></script>
+  <script src="studio.js?v=20261022-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#work">跳至精选案例</a>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="第二人生，返回首页">
       <span class="brand-wordmark" aria-hidden="true"><span class="brand-wordmark-art"><img src="assets/second-chapter-studio-transparent.png" alt="" width="1788" height="880"><span class="brand-corner brand-logo-corner" data-brand-motion></span></span></span>
-      <span>第二人生</span>
     </a>
     <nav id="mainNav" class="main-nav" aria-label="主导航">
       <a href="#work">精选案例</a><a href="#services">服务内容</a><a href="#ai">AI 创作</a><a href="#team">创作团队</a><a href="#about">关于工作室</a>
@@ -60,10 +59,9 @@
         <figure class="hero-slide"><img data-hero-src="assets/display/projects/ball-astronomy/still-03-1280.webp" data-hero-srcset="assets/display/projects/ball-astronomy/still-03-640.webp 640w, assets/display/projects/ball-astronomy/still-03-1280.webp 1280w, assets/display/projects/ball-astronomy/still-03-1920.webp 1920w" sizes="(max-width: 900px) max(100vw, 150vh), 100vw" alt="" width="1920" height="1080"></figure>
       </div>
       <div class="hero-scrim" aria-hidden="true"></div>
-      <p class="hero-index">Second Chapter Studio<span>高校与地方文化视听内容服务商</span></p>
-      <p class="hero-category"><span class="brand-corner" data-brand-motion aria-hidden="true"></span><span>校园 · 地方 · 青年</span></p>
-      <div class="hero-name"><h1 id="heroTitle">第二人生</h1><p>让故事，拥有再次被看见的可能。</p></div>
-      <div class="hero-summary"><p><span class="summary-line">从主题策划到完整成片，</span><span class="summary-line">以专业影像与 AI 创作<span class="summary-phrase">连接校园和地方。</span></span></p><a href="#work">观看精选作品<i data-lucide="arrow-down-right" aria-hidden="true"></i></a></div>
+      <div class="hero-category" aria-hidden="true"><span class="brand-corner" data-brand-motion></span></div>
+      <div class="hero-name"><h1 id="heroTitle"><span class="hero-title-light">第二</span><span>人生</span></h1><p class="hero-index">Second Chapter Studio<span>高校与地方文化视听内容服务商</span></p><p class="hero-tagline">让故事，拥有再次被看见的可能。</p></div>
+      <div class="hero-summary"><p><span class="summary-line">从主题策划到完整成片，</span><span class="summary-line">以专业影像与 AI 创作<span class="summary-phrase">连接校园和地方。</span></span></p><a href="#work">观看精选作品<i data-lucide="play" aria-hidden="true"></i></a></div>
       <div class="hero-progress" aria-label="封面切换"><button class="is-active" data-hero="0" aria-label="校园体育场航拍" aria-current="true"></button><button data-hero="1" aria-label="礼堂钢琴演出"></button><button data-hero="2" aria-label="一个球的故事，校园天文社项目"></button><span id="heroCount">01 / 03</span></div>
       <button id="heroPause" class="icon-button hero-pause" type="button" aria-label="暂停封面轮播" title="暂停封面轮播"><i data-lucide="pause" aria-hidden="true"></i></button>
     </section>
@@ -74,7 +72,7 @@
     </section>
 
     <section id="work" class="work section-shell reveal" aria-labelledby="workTitle">
-      <header class="section-heading"><p class="section-label">精选案例</p><h2 id="workTitle">先看作品，再认识我们。</h2><p class="work-description"><span>高校宣传、青年叙事与地方文化。</span><span>收录工作室及主创参与的代表项目，分工详见各案例。</span></p></header>
+      <header class="section-heading"><p class="section-label">精选案例</p><h2 id="workTitle">先看作品，再认识我们。</h2><p class="work-description"><span>高校宣传、青年叙事与地方文化。</span><span>收录工作室及主创参与的代表项目，具体分工请见各案例介绍。</span></p></header>
       <div id="caseFilters" class="case-filters" role="group" aria-label="案例分类"></div>
       <div id="caseGrid" class="case-grid" aria-live="polite"></div>
       <div class="case-more"><button id="moreCases" class="text-button" type="button">查看其余精选案例<i data-lucide="plus" aria-hidden="true"></i></button><span id="caseCount"></span></div>
@@ -85,25 +83,25 @@
     <section id="services" class="services section-shell reveal" aria-labelledby="servicesTitle">
       <div class="service-layout">
         <div class="service-content">
-          <header class="section-heading"><p class="section-label">服务内容</p><h2 id="servicesTitle">围绕传播任务，<br>选择适合的片种。</h2><p>为单个项目定制，也为学期、年度和系列栏目提供持续内容合作。</p></header>
+          <header class="section-heading"><p class="section-label">服务内容</p><h2 id="servicesTitle">围绕您的传播需求，<br>选择合适的片种。</h2><p>为您定制单个项目，也为学期、年度和系列栏目提供持续内容合作。</p></header>
           <div id="serviceList" class="service-list"></div>
         </div>
         <div class="service-visual">
           <figure><img src="assets/display/photography/camera/camera-06-1280.webp" srcset="assets/display/photography/camera/camera-06-640.webp 640w, assets/display/photography/camera/camera-06-1280.webp 1280w, assets/display/photography/camera/camera-06-2600.webp 2600w" sizes="(max-width: 560px) 46vw, 45vw" alt="夕阳中的校园教学楼航拍" width="2600" height="1462" loading="lazy" decoding="async"><figcaption><span>01 / 校园空间</span><span>摄影作品</span></figcaption></figure>
-          <figure><img src="assets/display/projects/liancheng/still-08-1280.webp" srcset="assets/display/projects/liancheng/still-08-640.webp 640w, assets/display/projects/liancheng/still-08-1280.webp 1280w, assets/display/projects/liancheng/still-08-1920.webp 1920w" sizes="(max-width: 560px) 46vw, 45vw" alt="《早晚得来》中的地方文化人物画面" width="1920" height="1080" loading="lazy" decoding="async"><figcaption><span>02 / 地方叙事</span><span>《早晚得来》</span></figcaption></figure>
+          <figure><img src="assets/display/projects/liancheng/still-02-1920.webp" alt="《早晚得来》中炉火上的砂锅与升起的蒸汽" width="1920" height="1080" loading="lazy" decoding="async"><figcaption><span>02 / 地方叙事</span><span>《早晚得来》</span></figcaption></figure>
         </div>
       </div>
-      <div class="delivery-line"><h3>不止一条主片</h3><p>围绕同一主题，按发布需要组织主片、短视频、横竖屏版本与配套图片。制作规模、审核节点和交付范围在合作前明确。</p><a href="#contact" class="inline-link">沟通项目需求<i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
+      <div class="delivery-line"><h3>不止一条主片</h3><p>围绕同一主题，主片之外，还可以搭配短视频、横竖屏版本和图片。拍多少、怎么用、需要哪些内容，都欢迎先和我们聊聊；从合作前的想法到交付前的细节，我们一起确认。</p><a href="#contact" class="inline-link">聊聊您的想法<i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
     </section>
 
     <section id="ai" class="ai-section section-shell reveal" aria-labelledby="aiTitle">
       <header class="section-heading"><p class="section-label">AI 创作</p><h2 id="aiTitle">拓展想象，<br>也落实到每一个镜头。</h2><p>将大语言模型、生成式视觉与专业后期协同使用，探索适合校园与地方文化的内容形式。</p></header>
       <div class="ai-content">
         <div class="ai-statement"><span>内容开发 → 视觉探索 → 视听整合</span><h3>从创意构想到<br>可交付的作品。</h3><p>将叙事开发、多模态生成与专业制作衔接起来，围绕具体主题展开视觉实验。由主创把握人物、镜头与节奏，让技术参与创作，也让表达保持完整。</p></div>
-        <div class="ai-practices">
-          <article><span class="ai-step" aria-hidden="true">01</span><span class="ai-connector" aria-hidden="true"><i data-lucide="arrow-down"></i></span><span>内容开发</span><h3>创意研究与叙事开发</h3><p>以大语言模型辅助主题研究、脚本推演与文案迭代，衔接采访素材整理、信息归纳和字幕制作，为不同传播场景形成清晰的内容方案。</p><div class="model-list"><a href="https://www.deepseek.com/news/deepseek-v4-1-flash/" target="_blank" rel="noopener noreferrer" title="DeepSeek 官方模型介绍">DeepSeek V4.1 Flash</a><a href="https://developers.openai.com/api/docs/models/gpt-6.1-sol" target="_blank" rel="noopener noreferrer" title="OpenAI 官方模型介绍">GPT-6.1 Sol</a></div></article>
-          <article><span class="ai-step" aria-hidden="true">02</span><span class="ai-connector" aria-hidden="true"><i data-lucide="arrow-down"></i></span><span>生成式视听</span><h3>多模态生成与实拍融合</h3><p>结合文本、图像与视频参考，开展场景生成、镜头预演及画面编辑。生成素材与实拍镜头共同进入剪辑、声音和调色流程，探索连贯的视听表达。</p><div class="model-list"><a href="https://seed.bytedance.com/en/seedance2_5" target="_blank" rel="noopener noreferrer" title="字节跳动 Seedance 2.5 官方介绍">Dreamina Seedance 2.5</a><a href="https://dreamina.capcut.com/tools/seedance-2-0" target="_blank" rel="noopener noreferrer" title="Dreamina Seedance 2.0 官方介绍">Dreamina Seedance 2.0</a><a href="https://www.minimax.io/blog/minimax-h3" target="_blank" rel="noopener noreferrer" title="MiniMax H3 官方介绍">MiniMax H3</a><a href="https://hailuoai.video/tools/minimax-h3-max" target="_blank" rel="noopener noreferrer" title="H3 Max 是基于 MiniMax H3、由 fal 后训练的版本">MiniMax H3 Max</a></div></article>
-          <article><span class="ai-step" aria-hidden="true">03</span><span>重点研发方向</span><h3>AIGC 短片与主题微短剧</h3><p>围绕校园成长、青年实践与地方文化，推进人物及场景设定、连续镜头和创意样片开发，探索适合系列传播的主题微短剧与联合制作。</p></article>
+        <div class="ai-practices" role="group" aria-label="AI 创作流程" tabindex="0">
+          <article><span class="ai-step" aria-hidden="true">01</span><span class="ai-connector" aria-hidden="true"><i data-lucide="arrow-right"></i></span><span>内容开发</span><h3>创意研究与叙事开发</h3><p>以大语言模型辅助主题研究、脚本推演与文案迭代，衔接采访素材整理、信息归纳和字幕制作，为不同传播场景形成清晰的内容方案。</p><div class="model-list"><a href="https://www.deepseek.com/news/deepseek-v4-1-flash/" target="_blank" rel="noopener noreferrer" title="DeepSeek 官方模型介绍">DeepSeek V4.1 Flash</a><a href="https://developers.openai.com/api/docs/models/gpt-6.1-sol" target="_blank" rel="noopener noreferrer" title="OpenAI 官方模型介绍">GPT-6.1 Sol</a></div></article>
+          <article><span class="ai-step" aria-hidden="true">02</span><span class="ai-connector" aria-hidden="true"><i data-lucide="arrow-right"></i></span><span>生成式视听</span><h3>多模态生成与实拍融合</h3><p>结合文本、图像与视频参考，开展场景生成、镜头预演及画面编辑。生成素材与实拍镜头共同进入剪辑、声音和调色流程，探索连贯的视听表达。</p><div class="model-list"><a href="https://seed.bytedance.com/en/seedance2_5" target="_blank" rel="noopener noreferrer" title="字节跳动 Seedance 2.5 官方介绍">Dreamina Seedance 2.5</a><a href="https://dreamina.capcut.com/tools/seedance-2-0" target="_blank" rel="noopener noreferrer" title="Dreamina Seedance 2.0 官方介绍">Dreamina Seedance 2.0</a><a href="https://www.minimax.io/blog/minimax-h3" target="_blank" rel="noopener noreferrer" title="MiniMax H3 官方介绍">MiniMax H3</a><a href="https://hailuoai.video/tools/minimax-h3-max" target="_blank" rel="noopener noreferrer" title="H3 Max 是基于 MiniMax H3、由 fal 后训练的版本">MiniMax H3 Max</a></div></article>
+          <article><span class="ai-step" aria-hidden="true">03</span><span class="ai-connector ai-connector-end" aria-hidden="true"></span><span>后续发展方向</span><h3>AIGC 短片与主题微短剧</h3><p>未来将围绕校园成长、青年实践与地方文化，逐步推进人物及场景设定、连续镜头和创意样片开发，探索适合系列传播的主题微短剧与联合制作。</p></article>
         </div>
       </div>
     </section>
