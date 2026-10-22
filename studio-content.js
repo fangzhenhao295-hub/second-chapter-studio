@@ -303,6 +303,7 @@ window.STUDIO_DATA = {
       "id": "grassland-concert",
       "format": "events",
       "title": "夏夜未央，青春回响",
+      "year": "2026.04",
       "type": "陈守仁商学院草地音乐会活动快剪",
       "summary": "泉州师范学院陈守仁商学院“夏夜未央，青春回响”草地音乐会活动快剪，记录校园草地上的音乐演出与青春相聚。",
       "links": [
@@ -330,6 +331,7 @@ window.STUDIO_DATA = {
       "id": "maritime-language-services",
       "format": "promo",
       "title": "海丝文旅讲解",
+      "year": "2025.06",
       "type": "外国语学院国际传播与语言服务展示（英文视频）",
       "summary": "泉州师范学院外国语学院国际传播与语言服务展示，以英文视频呈现海丝文旅讲解。",
       "links": [
@@ -1299,6 +1301,7 @@ window.STUDIO_DATA = {
       "id": "chemistry-alumni",
       "format": "events",
       "title": "化工与材料学院校友会成立大会",
+      "year": "2025.11",
       "type": "泉州师范学院活动快剪",
       "summary": "泉州师范学院化工与材料学院校友会成立大会活动快剪，记录校友相聚与大会现场。",
       "links": [
@@ -1325,6 +1328,7 @@ window.STUDIO_DATA = {
       "id": "midsummer-echoes",
       "format": "events",
       "title": "仲夏回响",
+      "year": "2026.06",
       "type": "2022 级音乐学专业毕业汇报演出",
       "summary": "泉州师范学院 2022 级音乐学专业毕业汇报演出影像记录。\n公开入口为部分演出片段，并非完整演出。",
       "links": [
