@@ -332,7 +332,13 @@ window.STUDIO_DATA = {
       "title": "海丝文旅讲解",
       "type": "外国语学院国际传播与语言服务展示（英文视频）",
       "summary": "泉州师范学院外国语学院国际传播与语言服务展示，以英文视频呈现海丝文旅讲解。",
-      "links": [],
+      "links": [
+        {
+          "href": "https://pan.baidu.com/s/1oG8csdamBKFpkOcqjswZlQ?pwd=pt96",
+          "label": "观看英文成片",
+          "kind": "video"
+        }
+      ],
       "sector": "campus",
       "media": [],
       "cover": "assets/display/projects/maritime-language-services/cover-classroom-clear-1280.webp",

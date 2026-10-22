@@ -17,7 +17,7 @@
     const host = new URL(url).hostname;
     return host.includes('douyin') ? '抖音' : host === 'mp.weixin.qq.com' ? '微信公众号' : host.includes('weixin') ? '视频号' : host.includes('xuexi.cn') ? '学习强国' : host.includes('baidu') ? '百度网盘' : '品牌网站';
   };
-  const watchLabel = (project, link = project.links[0]) => link?.kind === 'publication' ? link.label : project.id === 'oxs' ? '查看品牌网站' : project.id === 'foreign-language' ? '观看中英文成片' : '观看完整影片';
+  const watchLabel = (project, link = project.links[0]) => link?.kind === 'publication' || link?.kind === 'video' ? link.label : project.id === 'oxs' ? '查看品牌网站' : project.id === 'foreign-language' ? '观看中英文成片' : '观看完整影片';
   const watchIcon = (project, link = project.links[0]) => link?.kind === 'publication' || project.id === 'oxs' ? 'external-link' : 'play';
   const external = (link, label, className = '', iconName = 'arrow-up-right') => `<a class="${className}" href="${escape(link.href)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(label)}，${platform(link.href)}，在新窗口打开">${escape(label)}${icon(iconName)}</a>`;
 
@@ -345,8 +345,10 @@
   }
   let heroIndex=0,heroTimer=0,heroPaused=reduced.matches,heroRequest=0;
   let heroTouch=null,heroDragAnimation=null,heroDragOffset=0;
+  let heroWheelTimer=0,heroWheelDelta=0,heroWheelSwitched=false;
   const heroReel=$('.hero-reel');
   function resetHeroDrag(animate=true) {
+    hero.classList.remove('is-dragging');
     const distance=heroDragOffset;
     const dragged=Boolean(heroReel.style.transform);
     heroDragOffset=0;
@@ -366,15 +368,24 @@
     if(hero.hasPointerCapture(event.pointerId))hero.releasePointerCapture(event.pointerId);
     resetHeroDrag(!cancelled);
     const dx=event.clientX-touch.x,dy=event.clientY-touch.y;
-    if(!cancelled&&touch.horizontal&&Math.abs(dx)>=Math.max(44,hero.clientWidth*.1)&&Math.abs(dx)>Math.abs(dy)*1.35) {
+    const distance=Math.abs(dx),elapsed=Math.max(1,event.timeStamp-touch.time);
+    const deliberate=distance>=Math.max(40,Math.min(72,hero.clientWidth*.1))||(distance>=24&&distance/elapsed>=.4);
+    if(!cancelled&&touch.horizontal&&deliberate&&distance>Math.abs(dy)*1.35) {
       selectHero((heroIndex+(dx<0?1:-1)+slides.length)%slides.length);
     } else scheduleHero();
   }
+  function resetHeroWheel() {
+    clearTimeout(heroWheelTimer);
+    heroWheelTimer=0;heroWheelDelta=0;heroWheelSwitched=false;
+  }
   hero.addEventListener('pointerdown',event=>{
-    if(event.pointerType!=='touch'||!event.isPrimary||heroIntroActive||event.target.closest('a,button'))return;
+    if(!event.isPrimary||event.button!==0||heroIntroActive||event.target.closest('a,button'))return;
+    if(event.pointerType==='mouse')event.preventDefault();
     clearTimeout(heroTimer);
+    resetHeroWheel();
     resetHeroDrag(false);
-    heroTouch={id:event.pointerId,x:event.clientX,y:event.clientY,horizontal:false};
+    heroTouch={id:event.pointerId,x:event.clientX,y:event.clientY,time:event.timeStamp,horizontal:false};
+    hero.setPointerCapture(event.pointerId);
   });
   hero.addEventListener('pointermove',event=>{
     if(!heroTouch||event.pointerId!==heroTouch.id)return;
@@ -383,7 +394,7 @@
       if(Math.abs(dy)>12&&Math.abs(dy)>Math.abs(dx)) {endHeroTouch(event,true);return;}
       if(Math.abs(dx)<12||Math.abs(dx)<Math.abs(dy)*1.35)return;
       heroTouch.horizontal=true;
-      hero.setPointerCapture(event.pointerId);
+      hero.classList.add('is-dragging');
     }
     const limit=Math.min(18,hero.clientWidth*.018);
     heroDragOffset=Math.max(-limit,Math.min(limit,dx*.12));
@@ -391,6 +402,22 @@
   });
   hero.addEventListener('pointerup',event=>endHeroTouch(event));
   hero.addEventListener('pointercancel',event=>endHeroTouch(event,true));
+  hero.addEventListener('lostpointercapture',event=>endHeroTouch(event,true));
+  hero.addEventListener('dragstart',event=>{if(event.target.closest('.hero-reel'))event.preventDefault();});
+  hero.addEventListener('wheel',event=>{
+    if(heroIntroActive||heroTouch||event.ctrlKey||Math.abs(event.deltaX)<1||Math.abs(event.deltaX)<=Math.abs(event.deltaY)*1.35)return;
+    if(event.cancelable)event.preventDefault();
+    clearTimeout(heroTimer);
+    clearTimeout(heroWheelTimer);
+    heroWheelTimer=setTimeout(()=>{resetHeroWheel();scheduleHero();},200);
+    if(heroWheelSwitched)return;
+    const unit=event.deltaMode===1?16:event.deltaMode===2?hero.clientWidth:1;
+    heroWheelDelta+=event.deltaX*unit;
+    if(Math.abs(heroWheelDelta)>=48) {
+      heroWheelSwitched=true;
+      selectHero((heroIndex+(heroWheelDelta>0?1:-1)+slides.length)%slides.length);
+    }
+  },{passive:false});
   async function selectHero(index) {
     clearTimeout(heroTimer);
     const request=++heroRequest;
@@ -416,7 +443,7 @@
   }
   function scheduleHero() {
     clearTimeout(heroTimer);
-    if(!heroIntroActive&&!heroPaused&&!document.hidden&&!caseDialog.open) heroTimer=setTimeout(()=>selectHero((heroIndex+1)%slides.length),6500);
+    if(!heroIntroActive&&!heroPaused&&!heroTouch&&!document.hidden&&!caseDialog.open) heroTimer=setTimeout(()=>selectHero((heroIndex+1)%slides.length),6500);
   }
   function setHeroPause(paused) {
     heroPaused=paused;
@@ -429,10 +456,10 @@
   $('#heroPause').addEventListener('click',()=>setHeroPause(!heroPaused));
   hero.addEventListener('focusin',event=>{if(event.target.closest('.hero-summary,.hero-work')) finishHeroCopy();});
   document.addEventListener('visibilitychange',scheduleHero);
-  document.addEventListener('visibilitychange',()=>{if(document.hidden){finishHeroCopy();heroTouch=null;resetHeroDrag(false);}});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){finishHeroCopy();heroTouch=null;resetHeroDrag(false);resetHeroWheel();}});
   document.addEventListener('visibilitychange',()=>{if(document.hidden) finishHeroIntro(false);});
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&heroIntroActive){event.preventDefault();finishHeroIntro();}});
-  window.addEventListener('resize',()=>{finishHeroIntro(false);heroTouch=null;resetHeroDrag(false);scheduleHero();});
+  window.addEventListener('resize',()=>{finishHeroIntro(false);heroTouch=null;resetHeroDrag(false);resetHeroWheel();scheduleHero();});
   window.addEventListener('pagehide',()=>finishHeroIntro(false));
   window.addEventListener('studio:intro-timeout',()=>finishHeroIntro(false));
   caseDialog.addEventListener('close',scheduleHero);

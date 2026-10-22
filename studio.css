@@ -191,8 +191,7 @@ body,button,input,select,textarea,dialog{font-family:var(--font-ui)}
 .process-photos{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start}
 .process-photos figure,.process-photos figure:nth-child(2),.process-photos figure:nth-child(3){padding-top:0;min-width:0;grid-column:auto}
 .process-photos img,.process-photos figure:nth-child(2) img,.process-photos figure:nth-child(3) img{width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;background:var(--soft)}
-.about-heading{display:grid;grid-template-columns:minmax(0,1fr) 200px;column-gap:40px;max-width:none}
-.about-heading .about-logo{grid-column:2;grid-row:1/3;align-self:center;width:100%;height:auto}
+.about-heading{display:block;max-width:none}
 .photo-grid button:nth-child(6) img{object-position:41% center}
 .hero-motion-ready .hero:not(.is-copy-ready)>.hero-category,.hero-motion-ready .hero:not(.is-copy-ready)>.hero-name,.hero-motion-ready .hero:not(.is-copy-ready)>.hero-summary{opacity:0}
 .hero-name,.hero-summary{animation:none}
@@ -374,6 +373,9 @@ body,button,input,select,textarea,dialog{font-family:var(--font-ui)}
 .hero-slide:nth-child(2) img{object-position:center center}
 .hero-slide:nth-child(4) img{object-position:48% center}
 .hero{touch-action:pan-y pinch-zoom}
+.hero-reel img{-webkit-user-drag:none;user-select:none}
+.hero.is-dragging,.hero.is-dragging *{cursor:grabbing;user-select:none}
+@media(hover:hover) and (pointer:fine){.hero{cursor:grab}.hero a,.hero button{cursor:pointer}}
 .hero-motion-ready .hero:not(.is-copy-ready) .hero-work,.hero-intro-pending .hero-work{opacity:0}
 @media(max-width:560px){
   .hero-actions{right:10px;bottom:14px;gap:8px}
@@ -386,3 +388,8 @@ body,button,input,select,textarea,dialog{font-family:var(--font-ui)}
 .hero[data-index="3"] .hero-category{color:var(--ink);text-shadow:none}
 .hero[data-index="0"] .hero-category{color:#fff;text-shadow:0 1px 5px rgb(0 0 0 / .3)}
 @media(max-width:900px){.hero-slide:first-child img{object-position:62% center}.hero-slide:nth-child(2) img{object-position:54% center}.hero[data-index="1"] .hero-category{color:var(--ink);text-shadow:none}}
+.about-content{display:block}
+.about-heading h2{margin-top:0}
+.about-heading .section-label{margin-bottom:26px}
+.about-content .enterprise-all{width:100%;max-width:640px;margin-top:36px}
+@media(max-width:560px){.about-heading .section-label{margin-bottom:22px}}
