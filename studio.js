@@ -73,14 +73,39 @@
     if (item.open) $$('.service-item').forEach(other => {if(other !== item) other.open = false;});
   }));
   const memberButtons=$$('[data-member]');
+  const memberList=$('.team-list');
+  const memberDetails=$('.team-details');
+  const memberHover=window.matchMedia('(hover:hover) and (pointer:fine)');
+  let activeMember=null,memberHeightAnimation=null,memberContentAnimation=null;
+  function showMember(button){
+    if(activeMember===button)return;
+    const fromHeight=memberDetails.getBoundingClientRect().height;
+    memberHeightAnimation?.cancel();
+    memberContentAnimation?.cancel();
+    memberDetails.style.height=`${fromHeight}px`;
+    activeMember=button;
+    memberButtons.forEach(other=>{
+      const selected=other===button;
+      other.setAttribute('aria-expanded',String(selected));
+      document.getElementById(other.dataset.member).hidden=!selected;
+    });
+    const profile=button?document.getElementById(button.dataset.member):null;
+    const toHeight=profile?.getBoundingClientRect().height||0;
+    memberDetails.style.height=`${toHeight}px`;
+    if(reduced.matches){memberDetails.style.height='';return;}
+    const animation=memberDetails.animate([{height:`${fromHeight}px`},{height:`${toHeight}px`}],{duration:240,easing:'cubic-bezier(.22,.65,.26,1)'});
+    memberHeightAnimation=animation;
+    if(profile)memberContentAnimation=profile.animate([{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:240,easing:'ease-out'});
+    animation.finished.then(()=>{if(memberHeightAnimation===animation){memberDetails.style.height='';memberHeightAnimation=null;}}).catch(()=>{});
+  }
   memberButtons.forEach((button,index)=>{
-    button.addEventListener('click',()=>{
-      const open=button.getAttribute('aria-expanded')!=='true';
-      memberButtons.forEach(other=>{
-        const selected=other===button&&open;
-        other.setAttribute('aria-expanded',String(selected));
-        document.getElementById(other.dataset.member).hidden=!selected;
-      });
+    button.addEventListener('pointerenter',event=>{
+      if(memberHover.matches&&event.pointerType!=='touch')showMember(button);
+    });
+    button.addEventListener('focus',()=>{if(button.matches(':focus-visible'))showMember(button);});
+    button.addEventListener('click',event=>{
+      if(memberHover.matches&&event.detail>0&&event.pointerType!=='touch')showMember(button);
+      else showMember(activeMember===button?null:button);
     });
     button.addEventListener('keydown',event=>{
       let next;
@@ -88,8 +113,15 @@
       else if(event.key==='ArrowLeft')next=(index-1+memberButtons.length)%memberButtons.length;
       else if(event.key==='Home')next=0;
       else if(event.key==='End')next=memberButtons.length-1;
+      else if(event.key==='Escape'){event.preventDefault();showMember(null);}
       if(next!==undefined){event.preventDefault();memberButtons[next].focus();}
     });
+  });
+  memberList.addEventListener('pointerleave',event=>{
+    if(memberHover.matches&&event.pointerType!=='touch'&&!memberList.querySelector(':focus-visible'))showMember(null);
+  });
+  memberList.addEventListener('focusout',event=>{
+    if(!memberList.contains(event.relatedTarget)&&!memberList.matches(':hover'))showMember(null);
   });
 
   const caseDialog = $('#caseDialog');
