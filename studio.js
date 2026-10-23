@@ -325,13 +325,23 @@
       });
       const logo=document.createElement('div');
       logo.className='hero-intro-logo';
+      logo.setAttribute('role','img');
+      logo.setAttribute('aria-label','第二人生 Second Chapter Studio');
       const logoImage=document.createElement('img');
       logoImage.src=$('.brand img').src;
-      logoImage.alt='第二人生 Second Chapter Studio';
+      logoImage.alt='';
+      const logoWords=['second','chapter','studio'].map(name=>{
+        const word=document.createElement('span');
+        word.className=`hero-intro-word is-${name}`;
+        word.dataset.word=name;
+        word.setAttribute('aria-hidden','true');
+        word.append(logoImage.cloneNode(false));
+        return word;
+      });
       const logoCorner=document.createElement('span');
       logoCorner.className='brand-corner brand-logo-corner intro-logo-corner';
       logoCorner.setAttribute('aria-hidden','true');
-      logo.append(logoImage,logoCorner);
+      logo.append(...logoWords,logoCorner);
       const logoWidth=Math.min(460,innerWidth*.8);
       const logoHeight=logoWidth*880/1788;
       Object.assign(logo.style,{left:`${(innerWidth-logoWidth)/2}px`,top:`${(innerHeight-logoHeight)/2}px`,width:`${logoWidth}px`,height:`${logoHeight}px`});
@@ -369,7 +379,7 @@
       const startPullback=()=>{
         if(!heroIntroActive) return;
         heroIntro.dataset.phase='pullback';
-        // Keep the background still until the logo opening and its pause are complete.
+        // Keep the background still until the complete wordmark has appeared.
         const camera=[image,...fogLayers.map(layer=>layer.firstElementChild)].map(layer=>layer.animate(
           settleFrames(progress=>({transform:cameraTransform(progress)}),5.2),
           {duration:3850,easing:'linear',fill:'forwards'}
@@ -385,18 +395,28 @@
         const target=$('.hero-brand .brand-wordmark-art').getBoundingClientRect();
         const logoHome=logo.animate(settleFrames(progress=>({
           transform:`translate(${(target.left-logoBounds.left)*progress}px,${(target.top-logoBounds.top)*progress}px) scale(${mix(1,target.width/logoBounds.width,progress)})`
-        }),4.8),{duration:2600,delay:750,easing:'linear',fill:'forwards'});
+        }),4.8),{duration:2200,delay:500,easing:'linear',fill:'forwards'});
         heroIntroAnimations.push(...camera,...fog,clear,washOut,logoHome);
         Promise.all([...camera.map(animation=>animation.finished),...fog.map(animation=>animation.finished),logoHome.finished]).then(()=>finishHeroIntro()).catch(()=>{});
       };
       logoCorner.classList.add('is-animating','is-entering');
       const opening=logoCorner.getAnimations({subtree:true});
       heroIntroAnimations.push(...opening);
-      Promise.all(opening.map(animation=>animation.finished)).then(()=>{
+      Promise.all(opening.map(animation=>animation.finished)).then(async()=>{
         if(!heroIntroActive)return;
         logoCorner.classList.remove('is-animating','is-entering');
+        for(const word of logoWords){
+          if(!heroIntroActive)return;
+          heroIntro.dataset.phase=word.dataset.word;
+          const appearance=word.animate([{opacity:0},{opacity:1}],{
+            duration:420,easing:'ease-out',fill:'forwards'
+          });
+          heroIntroAnimations.push(appearance);
+          await appearance.finished;
+        }
+        if(!heroIntroActive)return;
         heroIntro.dataset.phase='hold';
-        heroIntroTimer=setTimeout(startPullback,100);
+        heroIntroTimer=setTimeout(startPullback,160);
       }).catch(()=>{});
     } catch {
       finishHeroIntro();

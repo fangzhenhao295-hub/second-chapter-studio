@@ -31,13 +31,49 @@
   <link rel="icon" href="assets/favicon-32.png?v=20261021-6" type="image/png" sizes="32x32">
   <link rel="icon" href="assets/favicon.svg?v=20261021-6" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=20261021-6" sizes="180x180">
-  <script>if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('hero-motion-ready');if(!location.hash||location.hash==='#top')document.documentElement.classList.add('hero-intro-pending');setTimeout(()=>{document.documentElement.classList.remove('hero-motion-ready','hero-intro-pending');window.dispatchEvent(new Event('studio:intro-timeout'));},10000);}</script>
+  <script id="studio-entry">
+    (() => {
+      let keepAtCover = true;
+      const resetCover = () => {
+        if (!keepAtCover) return;
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        if (location.hash) {
+          try {
+            const url = new URL(location.href);
+            url.hash = '';
+            history.replaceState(history.state, '', url.href);
+          } catch {}
+        }
+        window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+      };
+      // Reset before fragments or browser history can restore a lower section.
+      resetCover();
+      document.addEventListener('DOMContentLoaded', () => {
+        resetCover();
+        requestAnimationFrame(resetCover);
+      }, {once: true});
+      window.addEventListener('load', resetCover, {once: true});
+      window.addEventListener('pageshow', event => {
+        if (event.persisted) keepAtCover = true;
+        resetCover();
+        requestAnimationFrame(() => {
+          resetCover();
+          keepAtCover = false;
+        });
+      });
+      const releaseCover = () => {keepAtCover = false;};
+      ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(type =>
+        window.addEventListener(type, releaseCover, {once: true, passive: true, capture: true})
+      );
+    })();
+  </script>
+  <script>if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('hero-motion-ready');document.documentElement.classList.add('hero-intro-pending');setTimeout(()=>{document.documentElement.classList.remove('hero-motion-ready','hero-intro-pending');window.dispatchEvent(new Event('studio:intro-timeout'));},10000);}</script>
   <link rel="preload" href="assets/fonts/Outfit-Variable.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="assets/fonts/HarmonyOS-Sans-SC-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="studio.css?v=20261022-18">
+  <link rel="stylesheet" href="studio.css?v=20261023-19">
   <script src="assets/lucide.min.js" defer></script>
-  <script src="studio-content.js?v=20261022-18" defer></script>
-  <script src="studio.js?v=20261022-18" defer></script>
+  <script src="studio-content.js?v=20261023-19" defer></script>
+  <script src="studio.js?v=20261023-19" defer></script>
 </head>
 <body>
   <svg class="svg-symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><symbol id="link-asterisk" viewBox="0 0 24 24"><path d="M10 2h4v20h-4zM2.34 8.73l2-3.46 17.32 10-2 3.46zM2.34 15.27l17.32-10 2 3.46-17.32 10z"/></symbol></svg>

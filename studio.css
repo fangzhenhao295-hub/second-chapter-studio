@@ -365,7 +365,11 @@ body,button,input,select,textarea,dialog{font-family:var(--font-ui)}
 .hero-intro-scrim{transform-origin:0 0;will-change:transform}
 .hero-intro-wash{background:rgb(255 255 255 / .04)}
 .hero-intro-logo{position:absolute;max-width:none;opacity:1;filter:brightness(0) invert(1);transform-origin:0 0;will-change:transform;pointer-events:none}
-.hero-intro-logo>img{width:100%;height:100%;object-fit:fill;clip-path:polygon(0 0,80% 0,80% 32%,100% 32%,100% 100%,0 100%)}
+.hero-intro-word{position:absolute;inset:0;opacity:0;will-change:opacity}
+.hero-intro-word>img{display:block;width:100%;height:100%;max-width:none;object-fit:fill}
+.hero-intro-word.is-second{clip-path:polygon(0 0,80% 0,80% 33.5%,0 33.5%)}
+.hero-intro-word.is-chapter{clip-path:polygon(0 33.5%,100% 33.5%,100% 75%,60% 75%,60% 66%,0 66%)}
+.hero-intro-word.is-studio{clip-path:polygon(0 66%,60% 66%,60% 100%,0 100%)}
 .hero-intro-skip{position:absolute;top:max(18px,env(safe-area-inset-top));right:max(18px,env(safe-area-inset-right));background:transparent;color:#fff;filter:drop-shadow(0 1px 2px rgb(0 0 0 / .4))}
 .hero-intro-skip:hover{background:transparent;color:#fff}
 @supports(corner-shape:squircle){.hero-intro-card{corner-shape:squircle}}
